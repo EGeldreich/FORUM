@@ -1,0 +1,24 @@
+PAGES REQUISES
+
+    Page accueil (liste des posts ?)
+
+    Page connexion / enregistrement
+
+    Page post
+
+
+
+
+
+dans BDD clé étrangere = user_id
+
+
+Look up :
+    hydrate
+
+
+
+A confirmer :
+    hydrate = constructor mais qui va choper les datas depuis une BDD ?
+
+    
