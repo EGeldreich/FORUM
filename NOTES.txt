@@ -1,24 +1,13 @@
 PAGES REQUISES
 
-    Page accueil (liste des posts ?)
+    Connexion
+    Enregistrement
 
-    Page connexion / enregistrement
-
-    Page post
-
-
-
+    Accueil (liste des topics ?)
+    Topic ouvert
+    Category (ou "juste" filtre sur accueil ?)
 
 
-dans BDD clé étrangere = user_id
-
-
-Look up :
-    hydrate
-
-
-
-A confirmer :
-    hydrate = constructor mais qui va choper les datas depuis une BDD ?
+comment setup current_date par defaut sur les dates ?
 
     
