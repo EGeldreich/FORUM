@@ -8,12 +8,8 @@ PAGES REQUISES
     Category (ou "juste" filtre sur accueil ?)
 
 
-INDEX des controller =
-page par défaut pour le moment mais pas censé être utilisé au final ?
+User entity incomplete volontairement ou juste id et pseudo parce que le reste n'est utile que pour le login ?
 
-Controllers : dans cinema, on créait des variables, puis require la direction
-ici, return un tableau ?
-    
 FONCTIONNEMENT FRAMEWORK
 
 INDEX
@@ -27,5 +23,32 @@ INDEX
 
 CONTROLLER
     Gère les données entre les managers et les vues
-    $this->restrictTo()
-    $this->redirectTo
+    fonction index() qui sert de "homepage" pour cette section
+    $this->restrictTo($role) redirige au login si l'utilisateur n'a pas le $role
+    $this->redirectTo($controller, $action, $id) pour rediriger
+
+    return un tableau, qu'on utilise dans les views
+
+ENTITIES
+    Classic POO stuff
+    __constructor, getter and setters, __tooString
+
+MANAGERS
+    pour les requêtes sql
+    se connecte avec parent::connect() (qui est lui même DAO::connect)
+
+    METHODES NATIVES
+        findAll($order)
+            SELECT * de la table définie dans le manager
+
+
+
+
+
+
+
+
+
+
+THIS PUSH
+    POST entity

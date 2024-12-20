@@ -22,13 +22,13 @@ USE `forum_emmanuel`;
 -- Listage de la structure de table forum_emmanuel. category
 CREATE TABLE IF NOT EXISTS `category` (
   `id_category` int NOT NULL AUTO_INCREMENT,
-  `categoryName` varchar(100) COLLATE utf8mb4_bin NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_bin NOT NULL,
   PRIMARY KEY (`id_category`),
-  UNIQUE KEY `categoryName` (`categoryName`)
+  UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- Listage des données de la table forum_emmanuel.category : ~5 rows (environ)
-INSERT INTO `category` (`id_category`, `categoryName`) VALUES
+INSERT INTO `category` (`id_category`, `name`) VALUES
 	(3, 'Chickens'),
 	(5, 'DIY Builds'),
 	(1, 'Farm Life'),
