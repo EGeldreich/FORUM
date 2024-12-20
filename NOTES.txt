@@ -11,3 +11,13 @@ PAGES REQUISES
 comment setup current_date par defaut sur les dates ?
 
     
+FONCTIONNEMENT FRAMEWORK
+
+INDEX
+    Redirigeur automatique
+    Si rien dans l'url, redirige vers HOME
+    Si ctrl=name, active le namespace controller\\NameController
+    Si action pas définie, index par defaut
+    Si action=actionName, appelle la methode Name->actionName()
+    Si id pas definie, null
+    Si id=X, appelle la methode Name->actionName(X)
