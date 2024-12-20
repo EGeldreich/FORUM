@@ -1,3 +1,10 @@
+<?php
+    use Service\AsideService;
+    $asideData = AsideService::getAsideContent();
+    $categories = $asideData['categories'];
+    $users = $asideData['users'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -51,6 +58,37 @@
                     <?= $page ?>
 
                 </main>
+
+                <?php
+                    if($aside) { ?>
+                        <aside>
+                        <h4>CATEGORIES</h4>
+                            <?php foreach($categories as $category){ ?>
+                                <p><?= $category ?></p>
+                            <?php } ?>
+
+                            <br>
+                            <br>
+                            <h4>USERS</h4>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Users</th>
+                                        <th>Nb of msg</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach($users as $user){ ?>
+                                        <tr>
+                                            <td><?= $user->getNickname()?></td>
+                                            <td><?= $user->getTotalTopicsPosts()?></td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </aside>
+                    <?php }
+                ?>
             </div>
             <footer>
                 <p>&copy; <?= date_create("now")->format("Y") ?> - <a href="#">Règlement du forum</a> - <a href="#">Mentions légales</a></p>

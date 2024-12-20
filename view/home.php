@@ -1,7 +1,5 @@
 <?php
-    $categories = $result["data"]['categories']; 
     $topics = $result["data"]['topics']; 
-    $users = $result["data"]['users']; 
 ?>
 <h1>BIENVENUE SUR LE FORUM</h1>
 
@@ -15,13 +13,6 @@
 <br>
 <br>
 
-<h4>CATEGORIES</h4>
-<?php foreach($categories as $category){ ?>
-    <p><?= $category ?></p>
-<?php } ?>
-
-<br>
-<br>
 
 <h4>TOPICS</h4>
 <table>
@@ -47,24 +38,4 @@
     </tbody>
 </table>
 
-<br>
-<br>
-
-<h4>USERS</h4>
-<table>
-    <thead>
-        <tr>
-            <th>Users</th>
-            <th>Nb of msg</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach($users as $user){ ?>
-            <tr>
-                <td><?= $user->getNickname()?></td>
-                <td><?= $user->getTotalTopicsPosts()?></td>
-            </tr>
-        <?php } ?>
-    </tbody>
-</table>
 

@@ -51,6 +51,7 @@ class TopicController extends AbstractController implements ControllerInterface 
         return [
             "view" => VIEW_DIR."/forum/topic.php",
             "meta_description" => "Topic",
+            "aside" => true,
             "data" => [ 
                 "topic" => $topic,
                 // "userNumberTopics" => $userNumberTopics,

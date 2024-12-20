@@ -12,24 +12,17 @@ class HomeController extends AbstractController implements ControllerInterface {
     public function index() {
 
         // create new manager instances
-        $categoryManager = new CategoryManager();
         $topicManager = new TopicManager();
-        $userManager = new UserManager();
 
-        // Get the list of all categories, sorted by name
-        $categories = $categoryManager->findAll(["name", "ASC"]);
         // Get the list of topics, sorted by creation date
         $topics = $topicManager->findAll(["creationDate", "DESC"]);
-        // Get the list of top 5 Users
-        $users = $userManager->findTopUsers(["number", "DESC"]);
 
         return [
             "view" => VIEW_DIR."home.php",
             "meta_description" => "Page d'accueil du forum",
+            "aside" => true,
             "data" => [
-                "categories" => $categories,
                 "topics" => $topics,
-                "users" => $users
             ]
         ];
     }
