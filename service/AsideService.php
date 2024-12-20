@@ -13,7 +13,7 @@ class AsideService {
         $userManager = new UserManager();
 
         $categories = $categoryManager->findAll();
-        $users = $userManager->findTopUsers(["number", "DESC"]);
+        $users = $userManager->findTopUsers();
 
         return [
             "categories" => $categories,

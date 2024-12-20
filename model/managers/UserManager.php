@@ -23,6 +23,7 @@ class UserManager extends Manager{
         LEFT JOIN topic ON t.id_user = topic.user_id
         LEFT JOIN post ON t.id_user = post.user_id
         GROUP BY t.id_user
+        ORDER BY totalTopicsPosts DESC
         LIMIT 5;";
 
         return  $this->getMultipleResults(
