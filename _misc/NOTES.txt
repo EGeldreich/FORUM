@@ -8,8 +8,11 @@ PAGES REQUISES
     Category (ou "juste" filtre sur accueil ?)
 
 
-comment setup current_date par defaut sur les dates ?
+INDEX des controller =
+page par défaut pour le moment mais pas censé être utilisé au final ?
 
+Controllers : dans cinema, on créait des variables, puis require la direction
+ici, return un tableau ?
     
 FONCTIONNEMENT FRAMEWORK
 
@@ -21,3 +24,8 @@ INDEX
     Si action=actionName, appelle la methode Name->actionName()
     Si id pas definie, null
     Si id=X, appelle la methode Name->actionName(X)
+
+CONTROLLER
+    Gère les données entre les managers et les vues
+    $this->restrictTo()
+    $this->redirectTo
