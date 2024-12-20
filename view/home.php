@@ -37,7 +37,7 @@
     <tbody>
         <?php foreach($topics as $topic){ ?>
             <tr>
-                <td><?= $topic->getTitle()?></td>
+                <td><a href='index.php?ctrl=topic&action=findTopic&id=<?= $topic->getId()?>'><?= $topic->getTitle()?></a></td>
                 <td><?= $topic->getContent()?></td>
                 <td><?= $topic->getCreationDate()?></td>
                 <td><?= $topic->getCategory()?></td>

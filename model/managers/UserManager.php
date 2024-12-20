@@ -30,4 +30,32 @@ class UserManager extends Manager{
             $this->className
         );
     }
+
+    public function findNumberUserTopics($id) {
+        $sql = "SELECT
+            t.nickname,
+            COUNT(DISTINCT topic.id_topic)AS totalTopics
+        FROM ".$this->tableName." t 
+        INNER JOIN topic ON t.id_user = topic.user_id
+        WHERE t.id_user = :id ;";
+
+        return  $this->getOneOrNullResult(
+            DAO::select($sql, ['id' => $id]), 
+            $this->className
+        );
+    }
+
+    public function findNumberUserPosts($id) {
+        $sql = "SELECT
+            t.nickname,
+            COUNT(DISTINCT post.id_post)AS totalPosts
+        FROM ".$this->tableName." t 
+        INNER JOIN post ON t.id_user = post.user_id
+        WHERE t.id_user = :id ;";
+
+        return  $this->getOneOrNullResult(
+            DAO::select($sql, ['id' => $id]), 
+            $this->className
+        );
+    }
 }

@@ -16,6 +16,8 @@ final class User extends Entity{
     private $role;
     private $registrationDate;
     private $totalTopicsPosts;  // champ non mappé
+    private $totalPosts;
+    private $totalTopics; 
 
     public function __construct($data){         
         $this->hydrate($data);        
@@ -138,6 +140,43 @@ final class User extends Entity{
     public function setTotalTopicsPosts($totalTopicsPosts)
     {
         $this->totalTopicsPosts = $totalTopicsPosts;
+        return $this;
+    }
+
+
+    /**
+     * Get the value of totalPosts
+     */ 
+    public function getTotalPosts()
+    {
+        return $this->totalPosts;
+    }
+    /**
+     * Set the value of totalPosts
+     *
+     * @return  self
+     */ 
+    public function setTotalPosts($totalPosts)
+    {
+        $this->totalPosts = $totalPosts;
+        return $this;
+    }
+
+    /**
+     * Get the value of totalTopics
+     */ 
+    public function getTotalTopics()
+    {
+        return $this->totalTopics;
+    }
+    /**
+     * Set the value of totalTopics
+     *
+     * @return  self
+     */ 
+    public function setTotalTopics($totalTopics)
+    {
+        $this->totalTopics = $totalTopics;
         return $this;
     }
 
