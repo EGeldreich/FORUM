@@ -1,6 +1,7 @@
 <?php
     $categories = $result["data"]['categories']; 
     $topics = $result["data"]['topics']; 
+    $users = $result["data"]['users']; 
 ?>
 <h1>BIENVENUE SUR LE FORUM</h1>
 
@@ -34,14 +35,36 @@
         </tr>
     </thead>
     <tbody>
-<?php foreach($topics as $topic){ ?>
-    <tr>
-        <td><?= $topic->getTitle()?></td>
-        <td><?= $topic->getContent()?></td>
-        <td><?= $topic->getCreationDate()?></td>
-        <td><?= $topic->getCategory()?></td>
-        <td><?= $topic->getUser()?></td>
-    </tr>
-<?php } ?>
+        <?php foreach($topics as $topic){ ?>
+            <tr>
+                <td><?= $topic->getTitle()?></td>
+                <td><?= $topic->getContent()?></td>
+                <td><?= $topic->getCreationDate()?></td>
+                <td><?= $topic->getCategory()?></td>
+                <td><?= $topic->getUser()?></td>
+            </tr>
+        <?php } ?>
     </tbody>
 </table>
+
+<br>
+<br>
+
+<h4>USERS</h4>
+<table>
+    <thead>
+        <tr>
+            <th>Users</th>
+            <th>Nb of msg</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($users as $user){ ?>
+            <tr>
+                <td><?= $user->getNickname()?></td>
+                <td><?php var_dump($user)?></td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
+
