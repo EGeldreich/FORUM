@@ -1,8 +1,8 @@
 <?php
     use Service\AsideService;
-    $asideData = AsideService::getAsideContent();
-    $categories = $asideData['categories'];
-    $users = $asideData['users'];
+    $asideContent = AsideService::getAsideContent();
+    $categories = $asideContent['categories'];
+    $users = $asideContent['users'];
 ?>
 
 <!DOCTYPE html>
