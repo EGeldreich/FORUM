@@ -18,7 +18,7 @@ class UserManager extends Manager{
     public function findTopUsers() {
         $sql = "SELECT
             t.nickname,
-            COUNT(DISTINCT topic.id_topic) + COUNT(DISTINCT post.id_post) AS number
+            COUNT(DISTINCT topic.id_topic) + COUNT(DISTINCT post.id_post) AS totalTopicsPosts
         FROM ".$this->tableName." t 
         LEFT JOIN topic ON t.id_user = topic.user_id
         LEFT JOIN post ON t.id_user = post.user_id

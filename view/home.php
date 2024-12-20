@@ -62,7 +62,7 @@
         <?php foreach($users as $user){ ?>
             <tr>
                 <td><?= $user->getNickname()?></td>
-                <td><?php var_dump($user)?></td>
+                <td><?= $user->getTotalTopicsPosts()?></td>
             </tr>
         <?php } ?>
     </tbody>
