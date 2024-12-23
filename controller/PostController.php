@@ -11,34 +11,11 @@ use Model\Managers\PostManager;
 class PostController extends AbstractController implements ControllerInterface {
 
     public function index() {
-
-        // create new manager instances
-        $categoryManager = new CategoryManager();
-        $topicManager = new TopicManager();
-        $userManager = new UserManager();
-
-        // Get the list of all categories, sorted by name
-        $categories = $categoryManager->findAll(["name", "ASC"]);
-        // Get the list of topics, sorted by creation date
-        $topics = $topicManager->findAll(["creationDate", "DESC"]);
-        // Get the list of top 5 Users
-        $users = $userManager->findTopUsers(["number", "DESC"]);
-
-        return [
-            "view" => VIEW_DIR."home.php",
-            "aside" => true,
-            "meta_description" => "Page d'accueil du forum",
-            "data" => [
-                "categories" => $categories,
-                "topics" => $topics,
-                "users" => $users
-            ]
-        ];
-        
+        $this->redirectTo("home");
     }
 
-    public function postPost($id){
-        if(isset($_POST['postPost'])) {
+    public function newPost($id){
+        if(isset($_POST['newPost'])) {
             // Sanitize inputs
             $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
             // Check everything
@@ -53,17 +30,10 @@ class PostController extends AbstractController implements ControllerInterface {
                 $topicManager = new TopicManager();
                 $topic = $topicManager->findOneById($id);
                 $posts = $postManager->findTopicPosts($id);
+
+                $this->redirectTo("topic", "findTopic", $id);
             }
         }
-        return [
-            "view" => VIEW_DIR."/forum/topic.php",
-            "meta_description" => "Topic",
-            "aside" => true,
-            "data" => [
-                "topic" => $topic,
-                "posts" => $posts
-                ]
-        ];
     }
 
 }

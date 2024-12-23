@@ -12,28 +12,7 @@ class TopicController extends AbstractController implements ControllerInterface 
 
     public function index() {
 
-        // create new manager instances
-        $categoryManager = new CategoryManager();
-        $topicManager = new TopicManager();
-        $userManager = new UserManager();
-
-        // Get the list of all categories, sorted by name
-        $categories = $categoryManager->findAll(["name", "ASC"]);
-        // Get the list of topics, sorted by creation date
-        $topics = $topicManager->findAll(["creationDate", "DESC"]);
-        // Get the list of top 5 Users
-        $users = $userManager->findTopUsers(["number", "DESC"]);
-
-        return [
-            "view" => VIEW_DIR."home.php",
-            "aside" => true,
-            "meta_description" => "Page d'accueil du forum",
-            "data" => [
-                "categories" => $categories,
-                "topics" => $topics,
-                "users" => $users
-            ]
-        ];
+        $this->redirectTo("home");
         
     }
         
@@ -95,21 +74,14 @@ class TopicController extends AbstractController implements ControllerInterface 
                     "content" => $content,
                     "user_id" => 1
                 ]);
-                // Get managers and datas related to the outgoing page
-                $postManager = new PostManager();
-                $topic = $topicManager->findOneById($newTopic);
-                $posts = $postManager->findTopicPosts($newTopic);
+                // Redirect to the topic page
+                $this->redirectTo("topic", "findTopic", $newTopic);
+            } else { // if inputs arent verified succesfully
+                $this->redirectTo("topic", "newTopic");
             }
+        } else { // if POST is not set
+            $this->redirectTo("topic", "newTopic");
         }
-        return [
-            "view" => VIEW_DIR."/forum/topic.php",
-            "meta_description" => "Topic",
-            "aside" => true,
-            "data" => [
-                "topic" => $topic,
-                "posts" => $posts
-                ]
-        ];
     }
 
 }

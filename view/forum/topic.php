@@ -43,8 +43,8 @@
 <br>
 <br>
 <div class="form post-form column">
-    <form class="" method="post" action='index.php?ctrl=post&action=postPost&id=<?= $topic->getId() ?>'>
+    <form class="" method="post" action='index.php?ctrl=post&action=newPost&id=<?= $topic->getId() ?>'>
             <textarea name="content" id="content" placeholder="Write your reply here" required></textarea>
-        <input type="submit" value="Post" name="postPost">
+        <input type="submit" value="Post" name="newPost">
     </form>
 </div>

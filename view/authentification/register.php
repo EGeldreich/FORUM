@@ -23,7 +23,7 @@
             <input type="password" name="pass2" id="password2" placeholder="Confirm your password" required>
         </div>
 
-        <input type="submit" value="Create account" value="register">
+        <input type="submit" value="Create account" name="register">
     </form>
 
     <p>Already registered ? <a class="form-link" href="index.php?ctrl=security&action=loginPage">Login</a></p>

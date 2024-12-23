@@ -1,3 +1,6 @@
+<?php
+    $mail = $result["data"]['mail'] ?? NULL;
+?>
 <div class="form login-form column">
     <h1>Login</h1>
 
@@ -5,7 +8,11 @@
         <!-- Change url of link in layout ? -->
         <div class="input-and-label column">
             <label for="mail">Mail</label>
-            <input type="email" name="mail" id="mail" placeholder="Email" required>
+            <input type="email" name="mail" id="mail" placeholder="Email" 
+            <?php if($mail) {?> 
+                value="<?= $mail ?>"
+            <?php }?>
+            required>
         </div>
 
         <div class="input-and-label column">

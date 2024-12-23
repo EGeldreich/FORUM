@@ -59,4 +59,33 @@ class UserManager extends Manager{
             $this->className
         );
     }
+
+    public function findUserFromMail($mail) {
+
+        // SQL Request to get all posts from a topic, ordered chronologically
+        // with a number increasing for each post
+        $sql = "SELECT *
+                FROM user
+                WHERE mail = :mail
+                ";
+        
+        return  $this->getOneOrNullResult(
+            DAO::select($sql, ['mail' => $mail], false), 
+            $this->className
+        );
+    }
+    public function findUserFromPseudo($pseudo) {
+
+        // SQL Request to get all posts from a topic, ordered chronologically
+        // with a number increasing for each post
+        $sql = "SELECT *
+                FROM user
+                WHERE nickname = :pseudo
+                ";
+        
+        return  $this->getOneOrNullResult(
+            DAO::select($sql, ['pseudo' => $pseudo], false), 
+            $this->className
+        );
+    }
 }
