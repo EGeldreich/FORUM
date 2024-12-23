@@ -96,7 +96,6 @@ class TopicController extends AbstractController implements ControllerInterface 
                     "user_id" => 1
                 ]);
                 // Get managers and datas related to the outgoing page
-                $topicManager = new TopicManager();
                 $postManager = new PostManager();
                 $topic = $topicManager->findOneById($newTopic);
                 $posts = $postManager->findTopicPosts($newTopic);

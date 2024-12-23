@@ -8,7 +8,7 @@ use Model\Managers\CategoryManager;
 use Model\Managers\TopicManager;
 use Model\Managers\PostManager;
 
-class TopicController extends AbstractController implements ControllerInterface {
+class PostController extends AbstractController implements ControllerInterface {
 
     public function index() {
 
@@ -37,35 +37,22 @@ class TopicController extends AbstractController implements ControllerInterface 
         
     }
 
-    public function postPost(){
+    public function postPost($id){
         if(isset($_POST['postPost'])) {
             // Sanitize inputs
             $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
-
-            // Check if the category is legit
-            $categoryManager = new CategoryManager;
-            $allowedCategories = ["Farm Life", "DIY Builds", "Gardening", "Chickens", "Food Conservation"];
-            $categoryOk = in_array($submittedCategory, $allowedCategories);
-
-            // Get category id
-            $category = $categoryManager->findCategoryId($submittedCategory);
-            if ($category) {
-                $categoryId = $category->getId();
-            }
             // Check everything
-            if($title && strlen($title) <= 100 && $categoryOk && $content){
-                $topicManager = new TopicManager;
-                $newTopic = $topicManager->add([
-                    "title" => $title,
-                    "category_id" => $categoryId,
+            if($content){
+                $postManager = new PostManager;
+                $newPost = $postManager->add([
                     "content" => $content,
+                    "topic_id" => $id,
                     "user_id" => 1
                 ]);
                 // Get managers and datas related to the outgoing page
                 $topicManager = new TopicManager();
-                $postManager = new PostManager();
-                $topic = $topicManager->findOneById($newTopic);
-                $posts = $postManager->findTopicPosts($newTopic);
+                $topic = $topicManager->findOneById($id);
+                $posts = $postManager->findTopicPosts($id);
             }
         }
         return [

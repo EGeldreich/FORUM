@@ -10,6 +10,7 @@
 <h2><?= $topic->getTitle() ?> </h4>
 <p><?= $topic->getCategory() ?></p>
 <p><?= $topic->getUser() ?></p>
+<p><?= $topic->getContent() ?></p>
 
 <br>
 <br>
@@ -42,7 +43,7 @@
 <br>
 <br>
 <div class="form post-form column">
-    <form class="" method="post" action="index.php?ctrl=post&action=postPost">
+    <form class="" method="post" action='index.php?ctrl=post&action=postPost&id=<?= $topic->getId() ?>'>
             <textarea name="content" id="content" placeholder="Write your reply here" required></textarea>
         <input type="submit" value="Post" name="postPost">
     </form>
