@@ -36,44 +36,10 @@ class TopicController extends AbstractController implements ControllerInterface 
         ];
         
     }
-        
-    public function findTopic($id){
 
-        // Create new manager instances
-        $postManager = new PostManager();
-        $topicManager = new TopicManager();
-
-        // Get the topic
-        $topic = $topicManager->findOneById($id);
-        // Get the posts from that topic
-        $posts = $postManager->findTopicPosts($id);
-
-        return [
-            "view" => VIEW_DIR."/forum/topic.php",
-            "meta_description" => "Topic",
-            "aside" => true,
-            "data" => [ 
-                "topic" => $topic,
-                "posts" => $posts
-            ]
-        ];
-    }
-
-    public function newTopic(){
-
-        return [
-            "view" => VIEW_DIR."/forum/newTopic.php",
-            "meta_description" => "New topic page",
-            "aside" => true,
-            "data" => []
-        ];
-    }
-
-    public function postTopic(){
-        if(isset($_POST['postTopic'])) {
+    public function postPost(){
+        if(isset($_POST['postPost'])) {
             // Sanitize inputs
-            $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
-            $submittedCategory = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_SPECIAL_CHARS);
             $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
 
             // Check if the category is legit
