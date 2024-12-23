@@ -1,6 +1,7 @@
 <?php
 namespace Controller;
 
+use App\Session;
 use App\AbstractController;
 use App\ControllerInterface;
 use Model\Managers\UserManager;
@@ -60,18 +61,17 @@ class SecurityController extends AbstractController{
                         // Email and pseudo not used, can check password
 
                         if($pass1 == $pass2 && strlen($pass1) >= 8){
-                            $insertUser = $userManager->add([
+                            $user = $userManager->add([
                                 "mail" => $mail,
                                 "nickname" => $pseudo,
                                 "password" => password_hash($pass1, PASSWORD_DEFAULT)
-                            ]);
-                            // User added to DB
-
+                            ]);// User added to DB
+                            
                             // Log in user
                                 // Find the user
                             $user = $userManager->findUserFromMail($mail);
                             // Add him in Session
-                            // Session::setUser($user);
+                            Session::setUser($user);
 
                             $this->redirectTo("home");
                         }
@@ -82,6 +82,38 @@ class SecurityController extends AbstractController{
             $this->redirectTo("security", "registerPage");
         }
     }
-    public function login() {}
-    public function logout() {}
+    public function login() {
+        if(isset($_POST['login'])){
+
+            // Sanitize inputs
+            $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL);
+            $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
+
+            // Check inputs
+            if($mail && $password) {
+                // Check if the mail does not already exist in DB
+                $userManager = new UserManager();
+                $user = $userManager->findUserFromMail($mail);
+                
+                
+                if($user) { // if user exists, it means the mail is correct
+                    $hash = $user->getPassword(); // get hashed pwd from DB
+                    if ($hash == password_verify($password, $hash)) { // verify pwd
+                        Session::setUser($user);
+                        $this->redirectTo("home");
+                    } else {
+                        // wrong pwd
+                    }
+                } else {
+                    // wrong mail
+                }
+            }
+        } else { // if POST not set
+            $this->redirectTo("security", "loginPage");
+        }
+    }
+    public function logout() {
+        unset($_SESSION['user']);
+        $this->redirectTo("security", "loginPage");
+    }
 }

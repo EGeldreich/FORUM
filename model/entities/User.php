@@ -181,6 +181,10 @@ final class User extends Entity{
     }
 
 
+    public function hasRole($role){
+        return null;
+    }
+
     public function __toString() {
         return $this->nickname;
     }
