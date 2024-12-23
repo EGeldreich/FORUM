@@ -11,6 +11,9 @@
 <p><?= $topic->getCategory() ?></p>
 <p><?= $topic->getUser() ?></p>
 <p><?= $topic->getContent() ?></p>
+<?php if($topic->getUser() == App\Session::getUser()){ ?>
+    <a href="index.php?ctrl=topic&action=lockTopic&id=<?= $topic->getId() ?>">Lock topic</a>
+<?php } ?>
 
 <br>
 <br>

@@ -181,8 +181,9 @@ final class User extends Entity{
     }
 
 
-    public function hasRole($role){
-        return null;
+    public function hasRole($role) : bool {
+        $result = $this->role == $role;
+        return $result;
     }
 
     public function __toString() {
