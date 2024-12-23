@@ -13,4 +13,15 @@ class CategoryManager extends Manager{
     public function __construct(){
         parent::connect();
     }
+
+    public function findCategoryId($cat){
+        $sql = "SELECT t.id_category
+                FROM ".$this->tableName." t 
+                WHERE t.name = :name";
+       
+        return  $this->getOneOrNullResult(
+            DAO::select($sql, ['name' => $cat], false), 
+            $this->className
+        );
+    }
 }

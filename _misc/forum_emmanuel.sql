@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `topic` (
   `creationDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `closed` tinyint NOT NULL DEFAULT '0',
   `category_id` int NOT NULL,
-  `user_id` int DEFAULT NULL,
+  `user_id` int NOT NULL,
   PRIMARY KEY (`id_topic`) USING BTREE,
   KEY `category_id` (`category_id`) USING BTREE,
   KEY `user_id` (`user_id`),

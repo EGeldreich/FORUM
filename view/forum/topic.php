@@ -9,6 +9,7 @@
 
 <h2><?= $topic->getTitle() ?> </h4>
 <p><?= $topic->getCategory() ?></p>
+<p><?= $topic->getUser() ?></p>
 
 <br>
 <br>
@@ -38,5 +39,11 @@
         <?php } ?>
     </tbody>
 </table>
-
-
+<br>
+<br>
+<div class="form post-form column">
+    <form class="" method="post" action="index.php?ctrl=post&action=postPost">
+            <textarea name="content" id="content" placeholder="Write your reply here" required></textarea>
+        <input type="submit" value="Post" name="postPost">
+    </form>
+</div>

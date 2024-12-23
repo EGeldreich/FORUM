@@ -62,6 +62,10 @@
                 <?php
                     if($aside) { ?>
                         <aside>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
                         <a href="index.php?ctrl=topic&action=newTopic">New Topic</a>
                         <h4>CATEGORIES</h4>
                             <?php foreach($categories as $category){ ?>

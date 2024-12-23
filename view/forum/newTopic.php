@@ -2,37 +2,37 @@
 
 <div class="form topic-form column">
 
-    <form class="" action="POST" action="index.php?ctrl=security&action=login">
-        <!-- Change url of link in layout ? -->
+    <form class="" method="post" action="index.php?ctrl=topic&action=postTopic">
         <div class="input-and-label column">
             <label for="title">Topic title</label>
-            <input type="text" name="title" id="title" placeholder="Chose a constructive and easy to understand title">
+            <input type="text" name="title" id="title" placeholder="Chose a constructive and easy to understand title" required>
         </div>
 
         <div class="input-and-label column">
-            <label for="title">Topic title</label>
+            <label for="title">Category</label>
             <div class="radio-categories">
-                <input type="radio" name="farm-life" id="farm-life">
+                <input type="radio" name="category" id="farm-life" value="Farm Life">
                 <label for="farm-life">Farm Life</label>
 
-                <input type="radio" name="DIY-builds" id="DIY-builds">
+                <input type="radio" name="category" id="DIY-builds" value="DIY Builds">
                 <label for="DIY-builds">DIY Builds</label>
 
-                <input type="radio" name="gardening" id="gardening">
+                <input type="radio" name="category" id="gardening" value="Gardening">
                 <label for="gardening">Gardening</label>
 
-                <input type="radio" name="chickens" id="chickens">
+                <input type="radio" name="category" id="chickens" value="Chickens">
                 <label for="chickens">Chickens</label>
 
-                <input type="radio" name="food-conservation" id="food-conservation">
+                <input type="radio" name="category" id="food-conservation" value="Food Conservation">
                 <label for="food-conservation">Food Conservation</label>
             </div>
         </div>
 
         <div class="input-and-label column">
             <label for="content">Post Content</label>
-            <textarea name="content" id="content" placeholder="What do you want to talk about ?"></textarea>
+            <textarea name="content" id="content" placeholder="What do you want to talk about ?" required></textarea>
         </div>
 
+        <input type="submit" value="Publish" name="postTopic">
     </form>
 </div>
