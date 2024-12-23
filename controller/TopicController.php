@@ -1,6 +1,7 @@
 <?php
 namespace Controller;
 
+use App\Session;
 use App\AbstractController;
 use App\ControllerInterface;
 use Model\Managers\UserManager;
@@ -72,7 +73,7 @@ class TopicController extends AbstractController implements ControllerInterface 
                     "title" => $title,
                     "category_id" => $categoryId,
                     "content" => $content,
-                    "user_id" => 1
+                    "user_id" => Session::getUser()->getId()
                 ]);
                 // Redirect to the topic page
                 $this->redirectTo("topic", "findTopic", $newTopic);

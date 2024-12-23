@@ -1,6 +1,7 @@
 <?php
 namespace Controller;
 
+use App\Session;
 use App\AbstractController;
 use App\ControllerInterface;
 use Model\Managers\UserManager;
@@ -24,7 +25,7 @@ class PostController extends AbstractController implements ControllerInterface {
                 $newPost = $postManager->add([
                     "content" => $content,
                     "topic_id" => $id,
-                    "user_id" => 1
+                    "user_id" => Session::getUser()->getId()
                 ]);
                 // Get managers and datas related to the outgoing page
                 $topicManager = new TopicManager();
