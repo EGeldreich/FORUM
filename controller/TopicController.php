@@ -24,7 +24,7 @@ class TopicController extends AbstractController implements ControllerInterface 
         $topicManager = new TopicManager();
 
         // Get the topic
-        $topic = $topicManager->findOneById($id);
+        $topic = $topicManager->findTopic($id);
         // Get the posts from that topic
         $posts = $postManager->findTopicPosts($id);
 

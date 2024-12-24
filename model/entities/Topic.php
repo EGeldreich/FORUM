@@ -17,6 +17,9 @@ final class Topic extends Entity{
     private $creationDate;
     private $closed;
 
+    private $totalPosts;
+    private $totalTopics;
+
     public function __construct($data){         
         $this->hydrate($data);        
     }
@@ -139,7 +142,43 @@ final class Topic extends Entity{
         return $this;
     }
 
-    
+     /**
+     * Get the value of totalPosts
+     */ 
+    public function getTotalPosts()
+    {
+        return $this->totalPosts;
+    }
+    /**
+     * Set the value of totalPosts
+     *
+     * @return  self
+     */ 
+    public function setTotalPosts($totalPosts)
+    {
+        $this->totalPosts = $totalPosts;
+        return $this;
+    }
+
+    /**
+     * Get the value of totalTopics
+     */ 
+    public function getTotalTopics()
+    {
+        return $this->totalTopics;
+    }
+    /**
+     * Set the value of totalTopics
+     *
+     * @return  self
+     */ 
+    public function setTotalTopics($totalTopics)
+    {
+        $this->totalTopics = $totalTopics;
+        return $this;
+    }
+
+
     public function __toString(){
         return $this->title;
     }

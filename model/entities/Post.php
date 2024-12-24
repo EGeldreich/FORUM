@@ -14,6 +14,7 @@ final class Post extends Entity{
     private $postDate;
     private $topic;
     private $user;
+    
     private $responseNumber;
     private $totalPosts;
     private $totalTopics;

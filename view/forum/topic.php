@@ -2,15 +2,38 @@
     $topic = $result["data"]['topic'];
     $posts = $result["data"]['posts'];
 ?>
+
+<br>
+<br>
 <h1>SPECIFIC TOPIC</h1>
-
 <br>
 <br>
-
-<h2><?= $topic->getTitle() ?> </h4>
-<p><?= $topic->getCategory() ?></p>
-<p><?= $topic->getUser() ?></p>
-<p><?= $topic->getContent() ?></p>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>User</th>
+            <th>Nb Topics</th>
+            <th>Nb Posts</th>
+            <th>Date</th>
+            <th>Content</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><?= $topic->getTitle() ?></td>
+            <td><?= $topic->getCategory() ?></td>
+            <td><?= $topic->getUser() ?></td>
+            <td><?= $topic->getTotalTopics()?></td>
+            <td><?= $topic->getTotalPosts()?></td>
+            <td><?= $topic->getCreationDate()?></td>
+            <td><?= $topic->getContent()?></td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<br>
 <?php if($topic->getUser() == App\Session::getUser()){ 
     if($topic->getClosed() == 0) { ?>
         <a href="index.php?ctrl=topic&action=lockTopic&id=<?= $topic->getId() ?>">Lock topic</a>
