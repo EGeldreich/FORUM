@@ -16,6 +16,7 @@ class PostController extends AbstractController implements ControllerInterface {
     }
 
     public function newPost($id){
+        $this->restrictTo('user');
         if(isset($_POST['newPost'])) {
             // Sanitize inputs
             $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);

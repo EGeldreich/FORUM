@@ -50,6 +50,7 @@ class TopicController extends AbstractController implements ControllerInterface 
     }
 
     public function postTopic(){
+        $this->restrictTo('user');
         if(isset($_POST['postTopic'])) {
             // Sanitize inputs
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -86,6 +87,7 @@ class TopicController extends AbstractController implements ControllerInterface 
     }
 
     public function lockTopic($id) {
+        $this->restrictTo('user');
         $topicManager = new TopicManager;
         $topicManager->lockTopic($id);
 
@@ -93,6 +95,7 @@ class TopicController extends AbstractController implements ControllerInterface 
     }
 
     public function unlockTopic($id) {
+        $this->restrictTo('user');
         $topicManager = new TopicManager;
         $topicManager->unlockTopic($id);
 

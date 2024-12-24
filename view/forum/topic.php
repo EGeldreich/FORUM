@@ -49,7 +49,7 @@
 </table>
 <br>
 <br>
-<?php if($topic->getClosed() == 0){ ?>
+<?php if($topic->getClosed() == 0 && App\Session::getUser()){ ?>
     <div class="form post-form column">
         <form class="" method="post" action='index.php?ctrl=post&action=newPost&id=<?= $topic->getId() ?>'>
                 <textarea name="content" id="content" placeholder="Write your reply here" required></textarea>
