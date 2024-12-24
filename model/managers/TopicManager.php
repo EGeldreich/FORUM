@@ -14,6 +14,25 @@ class TopicManager extends Manager{
         parent::connect();
     }
 
+    public function lockTopic($id){
+
+        $sql = "UPDATE topic
+                SET closed = 1
+                WHERE id_topic = :id;";
+        
+        return DAO::update($sql, ['id' => $id]);
+    }
+
+    public function unlockTopic($id){
+
+        $sql = "UPDATE topic
+                SET closed = 0
+                WHERE id_topic = :id;";
+        
+        return DAO::update($sql, ['id' => $id]);
+    }
+
+
     // récupérer tous les topics d'une catégorie spécifique (par son id)
     public function findTopicsByCategory($id) {
 

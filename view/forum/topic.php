@@ -11,9 +11,13 @@
 <p><?= $topic->getCategory() ?></p>
 <p><?= $topic->getUser() ?></p>
 <p><?= $topic->getContent() ?></p>
-<?php if($topic->getUser() == App\Session::getUser()){ ?>
-    <a href="index.php?ctrl=topic&action=lockTopic&id=<?= $topic->getId() ?>">Lock topic</a>
-<?php } ?>
+<?php if($topic->getUser() == App\Session::getUser()){ 
+    if($topic->getClosed() == 0) { ?>
+        <a href="index.php?ctrl=topic&action=lockTopic&id=<?= $topic->getId() ?>">Lock topic</a>
+    <?php } else { ?>
+        <a href="index.php?ctrl=topic&action=unlockTopic&id=<?= $topic->getId() ?>">Unlock topic</a>
+<?php }
+} ?>
 
 <br>
 <br>
@@ -45,9 +49,11 @@
 </table>
 <br>
 <br>
-<div class="form post-form column">
-    <form class="" method="post" action='index.php?ctrl=post&action=newPost&id=<?= $topic->getId() ?>'>
-            <textarea name="content" id="content" placeholder="Write your reply here" required></textarea>
-        <input type="submit" value="Post" name="newPost">
-    </form>
-</div>
+<?php if($topic->getClosed() == 0){ ?>
+    <div class="form post-form column">
+        <form class="" method="post" action='index.php?ctrl=post&action=newPost&id=<?= $topic->getId() ?>'>
+                <textarea name="content" id="content" placeholder="Write your reply here" required></textarea>
+            <input type="submit" value="Post" name="newPost">
+        </form>
+    </div>
+<?php } ?>

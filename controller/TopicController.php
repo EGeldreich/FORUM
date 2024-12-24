@@ -85,4 +85,17 @@ class TopicController extends AbstractController implements ControllerInterface 
         }
     }
 
+    public function lockTopic($id) {
+        $topicManager = new TopicManager;
+        $topicManager->lockTopic($id);
+
+        $this->redirectTo("topic", "findTopic", "$id");
+    }
+
+    public function unlockTopic($id) {
+        $topicManager = new TopicManager;
+        $topicManager->unlockTopic($id);
+
+        $this->redirectTo("topic", "findTopic", "$id");
+    }
 }
