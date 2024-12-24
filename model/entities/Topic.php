@@ -19,6 +19,8 @@ final class Topic extends Entity{
 
     private $totalPosts;
     private $totalTopics;
+    private $sortDate;
+    private $postCount;
 
     public function __construct($data){         
         $this->hydrate($data);        
@@ -179,9 +181,46 @@ final class Topic extends Entity{
     }
 
 
+    /**
+     * Get the value of sortDate
+     */ 
+    public function getSortDate()
+    {
+        return $this->sortDate;
+    }
+    /**
+     * Set the value of sortDate
+     *
+     * @return  self
+     */ 
+    public function setSortDate($sortDate)
+    {
+        $this->sortDate = $sortDate;
+        return $this;
+    }
+
+
+    /**
+     * Get the value of postCount
+     */ 
+    public function getPostCount()
+    {
+        return $this->postCount;
+    }
+    /**
+     * Set the value of postCount
+     *
+     * @return  self
+     */ 
+    public function setPostCount($postCount)
+    {
+        $this->postCount = $postCount;
+        return $this;
+    }
+
+
     public function __toString(){
         return $this->title;
     }
 
-   
 }

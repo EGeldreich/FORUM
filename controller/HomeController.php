@@ -15,7 +15,9 @@ class HomeController extends AbstractController implements ControllerInterface {
         $topicManager = new TopicManager();
 
         // Get the list of topics, sorted by creation date
-        $topics = $topicManager->findAll(["creationDate", "DESC"]);
+        // $topics = $topicManager->findAll(["creationDate", "DESC"]);
+        $topics = $topicManager->findTopicsData();
+
 
         return [
             "view" => VIEW_DIR."home.php",

@@ -37,6 +37,48 @@ class TopicManager extends Manager{
             $this->className
         );
     }
+
+    public function findTopicsData(){
+        $sql = "SELECT
+                    t.id_topic,
+                    t.title,
+                    t.user_id,
+                    t.content,
+                    t.creationDate,
+                    t.closed,
+                    t.category_id,
+                    COALESCE(last_posts.latestPostDate, t.creationDate) AS sortDate,
+                    COALESCE(post_counts.postCount, 0) AS postCount
+                FROM
+                    topic t
+                LEFT JOIN (
+                    SELECT 
+                        topic_id,
+                        MAX(postDate) AS latestPostDate
+                    FROM
+                        post
+                    GROUP BY
+                        topic_id
+                    ) last_posts ON t.id_topic = last_posts.topic_id
+                LEFT JOIN (
+                    SELECT 
+                        topic_id,
+                        COUNT(*) AS postCount
+                    FROM
+                        post
+                    GROUP BY
+                        topic_id
+                    ) post_counts ON t.id_topic = post_counts.topic_id
+                ORDER BY
+                    sortDate DESC;";
+        
+        return  $this->getMultipleResults(
+            DAO::select($sql), 
+            $this->className
+        );
+    }
+
+
     public function lockTopic($id){
 
         $sql = "UPDATE topic

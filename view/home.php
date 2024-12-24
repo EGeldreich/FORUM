@@ -19,20 +19,44 @@
     <thead>
         <tr>
             <th>Title</th>
-            <th>Message</th>
-            <th>Date</th>
             <th>Category</th>
             <th>User</th>
+            <th>Message</th>
+            <th>DateCreation</th>
+            <th>DateLastPost</th>
+            <th>Closed ?</th>
+            <th>Count Posts</th>
         </tr>
     </thead>
     <tbody>
         <?php foreach($topics as $topic){ ?>
             <tr>
-                <td><a href='index.php?ctrl=topic&action=findTopic&id=<?= $topic->getId()?>'><?= $topic->getTitle()?></a></td>
-                <td><?= $topic->getContent()?></td>
-                <td><?= $topic->getCreationDate()?></td>
-                <td><?= $topic->getCategory()?></td>
-                <td><?= $topic->getUser()?></td>
+                <td>
+                    <a href='index.php?ctrl=topic&action=findTopic&id=<?= $topic->getId()?>'>
+                        <?= $topic->getTitle()?>
+                    </a>
+                </td>
+                <td>
+                    <?= $topic->getCategory()?>
+                </td>
+                <td>
+                    <?= $topic->getUser()?>
+                </td>
+                <td>
+                    <?= $topic->getContent()?>
+                </td>
+                <td>
+                    <?= $topic->getCreationDate()?>
+                </td>
+                <td>
+                    <?= $topic->getSortDate()?>
+                </td>
+                <td>
+                    <?= $topic->getClosed()?>
+                </td>
+                <td>
+                    <?= $topic->getPostCount()?>
+                </td>
             </tr>
         <?php } ?>
     </tbody>
