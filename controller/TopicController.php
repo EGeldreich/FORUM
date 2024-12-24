@@ -40,7 +40,7 @@ class TopicController extends AbstractController implements ControllerInterface 
     }
 
     public function newTopic(){
-
+        $this->restrictTo('user');
         return [
             "view" => VIEW_DIR."/forum/newTopic.php",
             "meta_description" => "New topic page",

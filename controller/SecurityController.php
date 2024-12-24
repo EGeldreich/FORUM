@@ -88,7 +88,7 @@ class SecurityController extends AbstractController{
             // Sanitize inputs
             $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL);
             $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
-
+            
             // Check inputs
             if($mail && $password) {
                 // Check if the mail does not already exist in DB

@@ -18,11 +18,11 @@
         <div class="input-and-label column">
             <label for="password">Password</label>
             <input type="password" name="password" id="password" placeholder="Password" required>
-            <a class="form-link__mini" href="#">Forgot your password</a>
+            <a class="form-link__mini" href="#">Forgot your password ?</a>
         </div>
 
-        <input type="submit" value="Create account" value="register">
+        <input type="submit" value="Login" name="login">
     </form>
 
-    <p>Already registered ? <a class="form-link" href="index.php?ctrl=security&action=loginPage">Login</a></p>
+    <p>No account yet ? <a class="form-link" href="index.php?ctrl=security&action=registerPage">Register</a></p>
 </div>

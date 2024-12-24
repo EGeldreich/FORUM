@@ -15,7 +15,8 @@ final class User extends Entity{
     private $mail;
     private $role;
     private $registrationDate;
-    private $totalTopicsPosts;  // champ non mappé
+
+    private $totalTopicsPosts;  // champs non mappé
     private $totalPosts;
     private $totalTopics; 
 
