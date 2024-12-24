@@ -68,25 +68,15 @@
                             <br>
                             <br>
                             <h4>CATEGORIES</h4>
-                            <?php foreach($categories as $category){ 
-                                if($category->getDisplayed() == 0) {?>
-                                    <a href="index.php?ctrl=home&action=undisplayCat&id=<?= $category->getId() ?>">
+                            <?php foreach($categories as $category){ ?>
                                         <p>
                                             <?= $category ?>
                                         </p>
-                                    </a>
-                                <?php }  else {?>
-                                    <a href="index.php?ctrl=home&action=displayCat&id=<?= $category->getId() ?>">
-                                        <p>
-                                            <?= $category ?>
-                                        </p>
-                                    </a>
-                            <?php }
-                            } ?>
+                            <?php } ?>
 
                             <br>
                             <br>
-                            <h4>USERS</h4>
+                            <h4>TOP USERS</h4>
                             <table>
                                 <thead>
                                     <tr>

@@ -37,7 +37,7 @@ class UserManager extends Manager{
         // SQL Request to get all posts from a topic, ordered chronologically
         // with a number increasing for each post
         $sql = "SELECT *
-                FROM user
+                FROM ".$this->tableName."
                 WHERE mail = :mail
                 ";
         
@@ -51,12 +51,24 @@ class UserManager extends Manager{
         // SQL Request to get all posts from a topic, ordered chronologically
         // with a number increasing for each post
         $sql = "SELECT *
-                FROM user
+                FROM ".$this->tableName."
                 WHERE nickname = :pseudo
                 ";
         
         return  $this->getOneOrNullResult(
             DAO::select($sql, ['pseudo' => $pseudo], false), 
+            $this->className
+        );
+    }
+
+    public function findUserTopics($id) {
+        $sql = "SELECT t.id_topic AS userTopics
+                FROM ".$this->tableName." u
+                LEFT JOIN topic t ON u.id_user = t.user_id
+                WHERE u.id_user = :id";
+
+        return  $this->getMultipleResults(
+            DAO::select($sql, ['id' => $id]), 
             $this->className
         );
     }

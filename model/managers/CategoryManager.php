@@ -24,20 +24,4 @@ class CategoryManager extends Manager{
             $this->className
         );
     }
-
-    public function undisplay($id) {
-        $sql = "UPDATE ".$this->tableName."
-                SET displayed = 1
-                WHERE id_category = :id;";
-        
-        return DAO::update($sql, ['id' => $id]);
-    }
-
-    public function display($id) {
-        $sql = "UPDATE ".$this->tableName."
-                SET displayed = 0
-                WHERE id_category = :id;";
-        
-        return DAO::update($sql, ['id' => $id]);
-    }
 }

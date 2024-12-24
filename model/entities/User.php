@@ -19,6 +19,7 @@ final class User extends Entity{
     private $totalTopicsPosts;  // champs non mappé
     private $totalPosts;
     private $totalTopics; 
+    private $userTopics; 
 
     public function __construct($data){         
         $this->hydrate($data);        
@@ -192,4 +193,24 @@ final class User extends Entity{
     }
 
     
+
+    /**
+     * Get the value of userTopics
+     */ 
+    public function getUserTopics()
+    {
+        return $this->userTopics;
+    }
+
+    /**
+     * Set the value of userTopics
+     *
+     * @return  self
+     */ 
+    public function setUserTopics($userTopics)
+    {
+        $this->userTopics = $userTopics;
+
+        return $this;
+    }
 }

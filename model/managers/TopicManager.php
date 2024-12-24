@@ -47,12 +47,10 @@ class TopicManager extends Manager{
                     t.creationDate,
                     t.closed,
                     t.category_id,
-                    c.displayed,
                     COALESCE(last_posts.latestPostDate, t.creationDate) AS sortDate,
                     COALESCE(post_counts.postCount, 0) AS postCount
                 FROM
                     topic t
-                INNER JOIN category c ON t.category_id = c.id_category
                 LEFT JOIN (
                     SELECT 
                         topic_id,

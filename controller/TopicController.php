@@ -89,7 +89,16 @@ class TopicController extends AbstractController implements ControllerInterface 
     public function lockTopic($id) {
         $this->restrictTo('user');
         $topicManager = new TopicManager;
-        $topicManager->lockTopic($id);
+        $userManager = new UserManager;
+
+        $authorId = Session::getUser()->getId();
+        var_dump($userManager->findUserTopics($authorId));
+        die;
+
+        if(in_array($id, )) {
+        // If in array ...
+            $topicManager->lockTopic($id);
+        }
 
         $this->redirectTo("topic", "findTopic", "$id");
     }
