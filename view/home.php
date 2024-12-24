@@ -29,7 +29,8 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach($topics as $topic){ ?>
+        <?php foreach($topics as $topic){ 
+            if($topic->getDisplayed() == 0) {?>
             <tr>
                 <td>
                     <a href='index.php?ctrl=topic&action=findTopic&id=<?= $topic->getId()?>'>
@@ -58,7 +59,8 @@
                     <?= $topic->getPostCount()?>
                 </td>
             </tr>
-        <?php } ?>
+        <?php } 
+        }?>
     </tbody>
 </table>
 

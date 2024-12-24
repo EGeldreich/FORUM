@@ -64,13 +64,25 @@
                         <aside>
                             <br>
                             <br>
+                            <a href="index.php?ctrl=topic&action=newTopic">New Topic</a>
                             <br>
                             <br>
-                        <a href="index.php?ctrl=topic&action=newTopic">New Topic</a>
-                        <h4>CATEGORIES</h4>
-                            <?php foreach($categories as $category){ ?>
-                                <p><?= $category ?></p>
-                            <?php } ?>
+                            <h4>CATEGORIES</h4>
+                            <?php foreach($categories as $category){ 
+                                if($category->getDisplayed() == 0) {?>
+                                    <a href="index.php?ctrl=home&action=undisplayCat&id=<?= $category->getId() ?>">
+                                        <p>
+                                            <?= $category ?>
+                                        </p>
+                                    </a>
+                                <?php }  else {?>
+                                    <a href="index.php?ctrl=home&action=displayCat&id=<?= $category->getId() ?>">
+                                        <p>
+                                            <?= $category ?>
+                                        </p>
+                                    </a>
+                            <?php }
+                            } ?>
 
                             <br>
                             <br>

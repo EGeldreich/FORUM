@@ -44,4 +44,19 @@ class HomeController extends AbstractController implements ControllerInterface {
         ];
     }
 
+    public function undisplayCat($id){
+
+        $categoryManager = new CategoryManager;
+        $categoryManager->undisplay($id);
+
+        $this->redirectTo("home");
+    }
+
+    public function displayCat($id){
+
+        $categoryManager = new CategoryManager;
+        $categoryManager->display($id);
+
+        $this->redirectTo("home");
+    }
 }

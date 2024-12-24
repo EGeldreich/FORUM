@@ -21,6 +21,7 @@ final class Topic extends Entity{
     private $totalTopics;
     private $sortDate;
     private $postCount;
+    private $displayed;
 
     public function __construct($data){         
         $this->hydrate($data);        
@@ -223,4 +224,24 @@ final class Topic extends Entity{
         return $this->title;
     }
 
+
+    /**
+     * Get the value of displayed
+     */ 
+    public function getDisplayed()
+    {
+        return $this->displayed;
+    }
+
+    /**
+     * Set the value of displayed
+     *
+     * @return  self
+     */ 
+    public function setDisplayed($displayed)
+    {
+        $this->displayed = $displayed;
+
+        return $this;
+    }
 }
