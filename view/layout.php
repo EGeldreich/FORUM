@@ -12,10 +12,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="<?= $meta_description ?>">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
         <script src="https://cdn.tiny.cloud/1/zg3mwraazn1b2ezih16je1tc6z7gwp5yd4pod06ae5uai8pa/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
         <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/style.css">
-        <title>FORUM</title>
+        <title>FORUMNAME</title>
     </head>
     <body>
         <div id="wrapper"> 
@@ -24,78 +29,83 @@
                 <h3 class="message" style="color: red"><?= App\Session::getFlash("error") ?></h3>
                 <h3 class="message" style="color: green"><?= App\Session::getFlash("success") ?></h3>
                 <header>
-                    <nav>
-                        <div id="nav-left">
-                            <a href="index.php">Accueil</a>
+                    <nav class="row">
+
+                        <div class="nav-left">
+                            <a href="index.php">
+                                <h1 class="outfit">
+                                    ForumName
+                                </h1>
+                            </a>
                             <?php
                             if(App\Session::isAdmin()){
                                 ?>
-                                <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
+                                <a href="index.php?ctrl=home&action=users">See all users</a>
                             <?php } ?>
                         </div>
-                        <div id="nav-right">
-                        <?php
-                            // si l'utilisateur est connecté 
-                            if(App\Session::getUser()){
-                                ?>
-                                <a href="index.php?ctrl=security&action=profile"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
-                                <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
-                                <?php
-                            }
-                            else{
-                                ?>
-                                <a href="index.php?ctrl=security&action=loginPage">Connexion</a>
-                                <a href="index.php?ctrl=security&action=registerPage">Inscription</a>
+
+                        <div class="nav-right row sat20">
                             <?php
-                            }
-                        ?>
+                                // si l'utilisateur est connecté 
+                                if(App\Session::getUser()){
+                                    ?>
+                                    <a href="index.php?ctrl=security&action=profile"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
+                                    <a href="index.php?ctrl=security&action=logout">Logout</a>
+                                    <?php
+                                }
+                                else{
+                                    ?>
+                                    <a href="index.php?ctrl=security&action=loginPage">Login</a>
+                                    <a href="index.php?ctrl=security&action=registerPage">Sign up</a>
+                            <?php } ?>
                         </div>
                     </nav>
                 </header>
                 
-                <main id="forum">
+                <main id="forum" class="fixed-section">
+                    <div class="scrollable-content">
+                        <?= $page ?>
+                    </div>
 
-                    <?= $page ?>
+                    <?php if($aside) { ?>
+                        <aside class="column">
+                            <a href="index.php?ctrl=topic&action=newTopic">
+                                <div class="side-block new-topic shadow big-btn outfit">
+                                    New Topic
+                                </div>
+                            </a>
+    
+                            <div class="side-block list-block shadow column">
+                                <h3 class="outfit">CATEGORIES</h4>
+                                <div class="list-block_list column">
+                                    <?php foreach($categories as $category){ ?>
+                                                <p>
+                                                    <?= $category ?>
+                                                </p>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                            
+                            <div class="side-block list-block shadow column last-block">
+                                <h3 class="outfit">TOP USERS</h4>
+                                <div class="list-block_list column">
+                                    <?php foreach($users as $user){ ?>
+                                        <div class="user row">
+                                            <p>
+                                                <?= $user->getNickname()?>
+                                            </p>
+                                            <p>
+                                                <?= $user->getTotalTopicsPosts()?>
+                                            </p>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </aside>
+                    <?php } ?>
 
                 </main>
 
-                <?php
-                    if($aside) { ?>
-                        <aside>
-                            <br>
-                            <br>
-                            <a href="index.php?ctrl=topic&action=newTopic">New Topic</a>
-                            <br>
-                            <br>
-                            <h4>CATEGORIES</h4>
-                            <?php foreach($categories as $category){ ?>
-                                        <p>
-                                            <?= $category ?>
-                                        </p>
-                            <?php } ?>
-
-                            <br>
-                            <br>
-                            <h4>TOP USERS</h4>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Users</th>
-                                        <th>Nb of msg</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach($users as $user){ ?>
-                                        <tr>
-                                            <td><?= $user->getNickname()?></td>
-                                            <td><?= $user->getTotalTopicsPosts()?></td>
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        </aside>
-                    <?php }
-                ?>
             </div>
             <footer>
                 <p>&copy; <?= date_create("now")->format("Y") ?> - <a href="#">Règlement du forum</a> - <a href="#">Mentions légales</a></p>

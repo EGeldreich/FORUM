@@ -1,67 +1,71 @@
 <?php
     $topics = $result["data"]['topics']; 
+    // UNDISPLAYED DATAS $topic->getSortDate() $topic->getClosed()
+
+    function timeElapsed($creationDate) {
+        $now = new DateTime(); // curr date and time
+        $creation = new DateTime($creationDate); // topic creation date
+        $interval = $now->diff($creation); // Calculate interval
+    
+        // Format the result
+        if ($interval->y > 0) {
+            return $interval->y . 'y';
+        } elseif ($interval->m > 0) {
+            return $interval->m . 'mo';
+        } elseif ($interval->d > 0) {
+            return $interval->d . 'd';
+        } elseif ($interval->h > 0) {
+            return $interval->h . 'h';
+        } elseif ($interval->i > 0) {
+            return $interval->i . 'm';
+        } else {
+            return $interval->s . 's';
+        }
+    }
 ?>
-<h1>BIENVENUE SUR LE FORUM</h1>
-
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit ut nemo quia voluptas numquam, itaque ipsa soluta ratione eum temporibus aliquid, facere rerum in laborum debitis labore aliquam ullam cumque.</p>
-
-<p>
-    <a href="index.php?ctrl=security&action=login">Se connecter</a>
-    <a href="index.php?ctrl=security&action=register">S'inscrire</a>
-</p>
-
-<br>
-<br>
-
-
-<h4>TOPICS</h4>
-<table>
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Category</th>
-            <th>User</th>
-            <th>Message</th>
-            <th>DateCreation</th>
-            <th>DateLastPost</th>
-            <th>Closed ?</th>
-            <th>Count Posts</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach($topics as $topic){ 
-            if($topic->getDisplayed() == 0) {?>
-            <tr>
-                <td>
-                    <a href='index.php?ctrl=topic&action=findTopic&id=<?= $topic->getId()?>'>
+<div class="topic-list column">
+    <?php foreach($topics as $topic){ ?>
+        <a href='index.php?ctrl=topic&action=findTopic&id=<?= $topic->getId()?>'>
+            <div class="topic-card row shadow">
+                <div class="topic-card_left column">
+                    <h3 class="topic-card_title outfit">
                         <?= $topic->getTitle()?>
-                    </a>
-                </td>
-                <td>
-                    <?= $topic->getCategory()?>
-                </td>
-                <td>
-                    <?= $topic->getUser()?>
-                </td>
-                <td>
-                    <?= $topic->getContent()?>
-                </td>
-                <td>
-                    <?= $topic->getCreationDate()?>
-                </td>
-                <td>
-                    <?= $topic->getSortDate()?>
-                </td>
-                <td>
-                    <?= $topic->getClosed()?>
-                </td>
-                <td>
-                    <?= $topic->getPostCount()?>
-                </td>
-            </tr>
-        <?php } 
-        }?>
-    </tbody>
-</table>
+                    </h3>
+                    <div class="topic-card_info row">
+
+                        <div class="info_user row">
+                            <div class="user_pp">
+                                <?= substr($topic->getUser(), 0, 1)?>
+                            </div>
+                            <div class="user_pseudo_time column">
+                                <p>
+                                    <?= $topic->getUser()?>
+                                </p>
+                                <p class="topic_time">
+                                    <?= timeElapsed($topic->getCreationDate()); ?>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="info_cat">
+                            <p class="info_cat_btn">
+                                <?= $topic->getCategory()?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="topic-card_right">
+                    <p>
+                        <?= $topic->getContent()?>
+                    </p>
+                </div>
+                <div class="topic-card_post-count">
+                    <p><?= $topic->getPostCount()?></p>
+                </div>
+            </div>
+        </a>      
+    <?php } ?>
+</div>
+
 
 
