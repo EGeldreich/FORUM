@@ -63,9 +63,8 @@
                 </header>
                 
                 <main id="forum" class="fixed-section">
-                    <div class="scrollable-content">
+                    
                         <?= $page ?>
-                    </div>
 
                     <?php if($aside) { ?>
                         <aside class="column">

@@ -23,49 +23,50 @@
         }
     }
 ?>
-<div class="topic-list column">
-    <?php foreach($topics as $topic){ ?>
-        <a href='index.php?ctrl=topic&action=findTopic&id=<?= $topic->getId()?>'>
-            <div class="topic-card row shadow">
-                <div class="topic-card_left column">
-                    <h3 class="topic-card_title outfit">
-                        <?= $topic->getTitle()?>
-                    </h3>
-                    <div class="topic-card_info row">
+<div class="scrollable-content">
+    <div class="topic-list column">
+        <?php foreach($topics as $topic){ ?>
+            <a href='index.php?ctrl=topic&action=findTopic&id=<?= $topic->getId()?>'>
+                <div class="topic-card row shadow">
+                    <div class="topic-card_left column">
+                        <h3 class="topic-card_title outfit">
+                            <?= $topic->getTitle()?>
+                        </h3>
+                        <div class="topic-card_info row">
 
-                        <div class="info_user row">
-                            <div class="user_pp">
-                                <?= substr($topic->getUser(), 0, 1)?>
+                            <div class="info_user row">
+                                <div class="user_pp">
+                                    <?= substr($topic->getUser(), 0, 1)?>
+                                </div>
+                                <div class="user_pseudo_time column">
+                                    <p>
+                                        <?= $topic->getUser()?>
+                                    </p>
+                                    <p class="topic_time">
+                                        <?= timeElapsed($topic->getCreationDate()); ?>
+                                    </p>
+                                </div>
                             </div>
-                            <div class="user_pseudo_time column">
-                                <p>
-                                    <?= $topic->getUser()?>
-                                </p>
-                                <p class="topic_time">
-                                    <?= timeElapsed($topic->getCreationDate()); ?>
-                                </p>
-                            </div>
-                        </div>
 
-                        <div class="info_cat">
-                            <p class="info_cat_btn">
-                                <?= $topic->getCategory()?>
-                            </p>
+                            <div class="info_cat">
+                                <p class="info_cat_btn">
+                                    <?= $topic->getCategory()?>
+                                </p>
+                            </div>
                         </div>
                     </div>
+                    <div class="topic-card_right">
+                        <p>
+                            <?= $topic->getContent()?>
+                        </p>
+                    </div>
+                    <div class="topic-card_post-count">
+                        <p><?= $topic->getPostCount()?></p>
+                    </div>
                 </div>
-                <div class="topic-card_right">
-                    <p>
-                        <?= $topic->getContent()?>
-                    </p>
-                </div>
-                <div class="topic-card_post-count">
-                    <p><?= $topic->getPostCount()?></p>
-                </div>
-            </div>
-        </a>      
-    <?php } ?>
+            </a>      
+        <?php } ?>
+    </div>
 </div>
-
 
 
