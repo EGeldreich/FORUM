@@ -28,16 +28,23 @@
         <?php foreach($topics as $topic){ ?>
             <a href='index.php?ctrl=topic&action=findTopic&id=<?= $topic->getId()?>'>
                 <div class="topic-card row shadow">
+
                     <div class="topic-card_left column">
+
                         <h3 class="topic-card_title outfit">
                             <?= $topic->getTitle()?>
                         </h3>
+
                         <div class="topic-card_info row">
 
                             <div class="info_user row">
+
                                 <div class="user_pp">
-                                    <?= substr($topic->getUser(), 0, 1)?>
+                                    <p class="h3">
+                                        <?= substr($topic->getUser(), 0, 1)?>
+                                    </p>
                                 </div>
+
                                 <div class="user_pseudo_time column">
                                     <p>
                                         <?= $topic->getUser()?>
@@ -48,6 +55,8 @@
                                 </div>
                             </div>
 
+                            <div class="separator"></div>
+
                             <div class="info_cat">
                                 <p class="info_cat_btn">
                                     <?= $topic->getCategory()?>
@@ -55,13 +64,18 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="separator"></div>
+
                     <div class="topic-card_right">
                         <p>
                             <?= $topic->getContent()?>
                         </p>
                     </div>
                     <div class="topic-card_post-count">
-                        <p><?= $topic->getPostCount()?></p>
+                        <p class="h4">
+                            <?= $topic->getPostCount()?>
+                        </p>
                     </div>
                 </div>
             </a>      
