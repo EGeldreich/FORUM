@@ -106,8 +106,44 @@
                 </main>
 
             </div>
-            <footer>
-                <p>&copy; <?= date_create("now")->format("Y") ?> - <a href="#">Règlement du forum</a> - <a href="#">Mentions légales</a></p>
+            <footer class="row">
+
+                <div class="footer_left row">
+                    <div class="footer_link-column column">
+                        <p class="link-column_title big-btn">
+                            More ressources
+                        </p>
+                        <ul class="link-column_links">
+                            <li><a href="">Got none</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer_link-column column">
+                        <p class="link-column_title big-btn">
+                            Socials
+                        </p>
+                        <ul class="link-column_links">
+                            <li><a href="">Instagram</a></li>
+                            <li><a href="">Everything</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer_link-column column">
+                        <p class="link-column_title big-btn">
+                            Help
+                        </p>
+                        <ul class="link-column_links">
+                            <li><a href="">Contact us</a></li>
+                            <li><a href="">FAQ</a></li>
+                            <li><a href="">Privacy policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-right column">
+                    <h2>ForumName</h2>
+                    <small>&copy; <?= date_create("now")->format("Y") ?> - <a href="#">Règlement du forum</a> - <a href="#">Mentions légales</a></small>
+                </div>
             </footer>
         </div>
         <script

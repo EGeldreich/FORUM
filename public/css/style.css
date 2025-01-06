@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
+    list-style: none;
 }
 a {
     all: unset;
@@ -110,7 +111,7 @@ body {
 /* GENERAL ______________________________________________________*/
 
 body {
-    background-color: #edf4ff;
+    background-color: var(--white);
 }
 .fixed-section {
     width: var(--wrapper-width);
@@ -200,6 +201,20 @@ aside {
         }
     }
 }
+/* FOOTER ______________________________________________________ */
+
+footer {
+    position: relative;
+    bottom: 0;
+    width: var(--wrapper-width);
+    height: 216px;
+    background-color: rgba(var(--black-rgb), 0.8);
+    padding: 24px 72px;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+    color: var(--white);
+}
+
 /* HOME ______________________________________________________ */
 
 .topic-list {
