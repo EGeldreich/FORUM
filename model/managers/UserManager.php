@@ -61,15 +61,4 @@ class UserManager extends Manager{
         );
     }
 
-    public function findUserTopics($id) {
-        $sql = "SELECT t.id_topic AS userTopics
-                FROM ".$this->tableName." u
-                LEFT JOIN topic t ON u.id_user = t.user_id
-                WHERE u.id_user = :id";
-
-        return  $this->getMultipleResults(
-            DAO::select($sql, ['id' => $id]), 
-            $this->className
-        );
-    }
 }

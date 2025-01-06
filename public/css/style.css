@@ -280,7 +280,12 @@ footer {
         position: relative;
         height: 100%;
         align-items: stretch;
+        transition: all 0.2s ease-in-out;
 
+        &:hover {
+            /* MUST CHANGE DEPENDING ON CAT ____________ */
+            background-color: var(--green-light);
+        }
         & .separator {
             width: 2px;
             background-color: var(--dark-grey);
@@ -350,5 +355,20 @@ footer {
             right: 0;
             bottom: 0;
         }
+    }
+}
+
+/* LOGIN / REGISTER ___________________________________________________ */
+
+.form {
+    width: 350px;
+    margin: 0 auto;
+
+    & h1 {
+        text-align: center;
+    }
+    & input {
+        border-radius: 10px;
+        height: 50px;
     }
 }
