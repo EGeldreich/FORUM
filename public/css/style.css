@@ -67,7 +67,7 @@ a {
 /* FONT */
 h1,
 .h1 {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 48px;
 }
 h2,
@@ -111,7 +111,37 @@ body {
 /* GENERAL ______________________________________________________*/
 
 body {
-    background-color: var(--white);
+    background-color: white;
+}
+.bg-element {
+    position: fixed;
+}
+.bg-element_first {
+    top: -10px;
+    left: 1360px;
+    width: 200px;
+    height: 200px;
+    background-color: var(--blue);
+    border-radius: 15px;
+    transform: rotate(66deg);
+}
+.bg-element_second {
+    top: 200px;
+    left: 360px;
+    width: 350px;
+    height: 350px;
+    background-color: var(--blue-dark);
+    border-radius: 50px;
+    transform: rotate(103deg);
+}
+.bg-element_third {
+    top: 600px;
+    left: 1200px;
+    width: 200px;
+    height: 200px;
+    background-color: var(--dark-grey);
+    border-radius: 200px;
+    transform: rotate(-10deg);
 }
 .fixed-section {
     width: var(--wrapper-width);
@@ -119,12 +149,12 @@ body {
     padding: 0 72px;
     background-color: rgba(var(--blue-rgb), 0.6);
     backdrop-filter: blur(10px);
-    position: fixed;
+    position: relative;
     top: 72px;
     overflow: visible;
 }
 .scrollable-content {
-    padding-top: 96px;
+    padding: 96px 0;
     position: relative;
     top: -72px;
     width: var(--content-width);
@@ -140,6 +170,7 @@ body {
 /* HEADER _______________________________________________________ */
 
 header {
+    position: absolute;
     width: var(--wrapper-width);
     height: 72px;
     background-color: rgba(var(--white-rgb), 0.6);
@@ -147,7 +178,6 @@ header {
     border-top-right-radius: 20px;
     padding: 0 72px;
     backdrop-filter: blur(10px);
-    position: fixed;
     z-index: 10;
 
     & nav {
@@ -205,7 +235,7 @@ aside {
 
 footer {
     position: relative;
-    bottom: 0;
+    bottom: -88px;
     width: var(--wrapper-width);
     height: 216px;
     background-color: rgba(var(--black-rgb), 0.8);
@@ -213,6 +243,25 @@ footer {
     backdrop-filter: blur(10px);
     z-index: 10;
     color: var(--white);
+    justify-content: space-between;
+
+    & .footer_left {
+        gap: 96px;
+
+        & .footer_link-column {
+            gap: 24px;
+
+            & .link-column_links {
+                gap: 8px;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    & .footer-right {
+        justify-content: space-between;
+        align-items: end;
+    }
 }
 
 /* HOME ______________________________________________________ */
@@ -234,7 +283,7 @@ footer {
 
         & .separator {
             width: 2px;
-            background-color: var(--blue);
+            background-color: var(--dark-grey);
             border-radius: 2px;
         }
 

@@ -23,7 +23,10 @@
         <title>FORUMNAME</title>
     </head>
     <body>
-        <div id="wrapper"> 
+        <div id="wrapper">
+            <div class="bg-element bg-element_first"></div>
+            <div class="bg-element bg-element_second"></div>
+            <div class="bg-element bg-element_third"></div>
             <div id="mainpage">
                 <!-- c'est ici que les messages (erreur ou succès) s'affichent-->
                 <h3 class="message" style="color: red"><?= App\Session::getFlash("error") ?></h3>
@@ -113,7 +116,7 @@
                         <p class="link-column_title big-btn">
                             More ressources
                         </p>
-                        <ul class="link-column_links">
+                        <ul class="link-column_links column">
                             <li><a href="">Got none</a></li>
                         </ul>
                     </div>
@@ -122,7 +125,7 @@
                         <p class="link-column_title big-btn">
                             Socials
                         </p>
-                        <ul class="link-column_links">
+                        <ul class="link-column_links column">
                             <li><a href="">Instagram</a></li>
                             <li><a href="">Everything</a></li>
                         </ul>
@@ -132,7 +135,7 @@
                         <p class="link-column_title big-btn">
                             Help
                         </p>
-                        <ul class="link-column_links">
+                        <ul class="link-column_links column">
                             <li><a href="">Contact us</a></li>
                             <li><a href="">FAQ</a></li>
                             <li><a href="">Privacy policy</a></li>
@@ -141,7 +144,7 @@
                 </div>
 
                 <div class="footer-right column">
-                    <h2>ForumName</h2>
+                    <h2 class="h1">ForumName</h2>
                     <small>&copy; <?= date_create("now")->format("Y") ?> - <a href="#">Règlement du forum</a> - <a href="#">Mentions légales</a></small>
                 </div>
             </footer>
