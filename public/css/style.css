@@ -57,12 +57,12 @@ a {
 .row {
     display: flex;
 }
-.shadow {
-    box-shadow: 8px 8px 12px rgba(var(--black-rgb), 0.15);
-}
 .column {
     display: flex;
     flex-direction: column;
+}
+.shadow {
+    box-shadow: 8px 8px 12px rgba(var(--black-rgb), 0.15);
 }
 #wrapper {
     width: var(--wrapper-width);
@@ -290,7 +290,7 @@ footer {
         padding: 24px;
         gap: 12px;
         position: relative;
-        height: 100%;
+        max-height: 216px;
         align-items: stretch;
         transition: all 0.2s ease-in-out;
 
@@ -372,7 +372,8 @@ footer {
 
         & .topic-card_right {
             flex: 1 1 50%;
-            height: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         & .topic-card_post-count {
             width: 30px;

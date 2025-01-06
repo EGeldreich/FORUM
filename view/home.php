@@ -30,10 +30,12 @@
                 <div class="topic-card row shadow">
 
                     <div class="topic-card_left column">
-
-                        <h3 class="topic-card_title outfit">
-                            <?= $topic->getTitle()?>
-                        </h3>
+                            <h3 class="topic-card_title outfit">
+                                <?php
+                                    $out = strlen($topic->getTitle()) > 50 ? substr($topic->getTitle(),0,50)."..." : $topic->getTitle(); 
+                                ?>
+                                <?= $out?>
+                            </h3>
 
                         <div class="topic-card_info row">
 
