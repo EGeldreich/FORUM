@@ -31,7 +31,7 @@
                 <!-- c'est ici que les messages (erreur ou succès) s'affichent-->
                 <h3 class="message" style="color: red"><?= App\Session::getFlash("error") ?></h3>
                 <h3 class="message" style="color: green"><?= App\Session::getFlash("success") ?></h3>
-                <header>
+                <header class="shadow">
                     <nav class="row">
 
                         <div class="nav-left">
@@ -65,7 +65,7 @@
                     </nav>
                 </header>
                 
-                <main id="forum" class="fixed-section">
+                <main id="forum" class="fixed-section shadow">
                     
                         <?= $page ?>
 
@@ -109,7 +109,7 @@
                 </main>
 
             </div>
-            <footer class="row">
+            <footer class="row shadow">
 
                 <div class="footer_left row">
                     <div class="footer_link-column column">
