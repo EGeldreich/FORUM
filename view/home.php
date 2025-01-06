@@ -58,7 +58,7 @@
                             <div class="separator"></div>
 
                             <div class="info_cat">
-                                <p class="info_cat_btn">
+                                <p class="info_cat_btn <?= substr($topic->getCategory(), 0, 3)?>">
                                     <?= $topic->getCategory()?>
                                 </p>
                             </div>
@@ -73,7 +73,7 @@
                         </p>
                     </div>
                     <div class="topic-card_post-count">
-                        <p class="h4">
+                        <p class="sat20">
                             <?= $topic->getPostCount()?>
                         </p>
                     </div>

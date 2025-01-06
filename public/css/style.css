@@ -32,7 +32,7 @@ a {
     --yellow-light: #f5f98f;
     --yellow-dark: #805e13;
 
-    --red: #ff575a;
+    --red: #ff686b;
     --red-light: #ffc7c8;
     --red-dark: #a01416;
 
@@ -140,10 +140,10 @@ body {
     transform: rotate(103deg);
 }
 .bg-element_third {
-    top: 600px;
-    left: 1200px;
-    width: 200px;
-    height: 200px;
+    top: 800px;
+    left: 1400px;
+    width: 100px;
+    height: 100px;
     background-color: var(--dark-grey);
     border-radius: 200px;
     transform: rotate(-10deg);
@@ -160,9 +160,10 @@ body {
     overflow: visible;
 }
 .scrollable-content {
-    padding-top: 112px;
+    padding: calc(var(--header-height) + var(--space-height) + 24px) 0
+        calc(var(--footer-height) + var(--space-height) + 24px);
     position: relative;
-    top: -88px;
+    top: calc(-1 * (var(--header-height) + var(--space-height)));
     width: var(--content-width);
     height: calc(
         var(--header-height) + var(--main-height) + var(--footer-height) +
@@ -184,10 +185,10 @@ header {
     width: var(--wrapper-width);
     height: var(--header-height);
     background-color: rgba(var(--white-rgb), 0.6);
+    backdrop-filter: blur(10px);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     padding: 0 72px;
-    backdrop-filter: blur(10px);
     z-index: 10;
 
     & nav {
@@ -282,7 +283,8 @@ footer {
     gap: 24px;
 
     & .topic-card {
-        background-color: var(--white);
+        background-color: rgba(var(--white-rgb), 0.6);
+        backdrop-filter: blur(10px);
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
         padding: 24px;
@@ -294,7 +296,7 @@ footer {
 
         &:hover {
             /* MUST CHANGE DEPENDING ON CAT ____________ */
-            background-color: var(--green-light);
+            background-color: var(--white);
         }
         & .separator {
             width: 2px;
@@ -320,14 +322,13 @@ footer {
                     align-items: center;
 
                     & .user_pp {
-                        /* MUST CHANGE DEPENDING ON CAT ____________ */
-                        background-color: var(--green);
                         width: 48px;
                         height: 48px;
                         line-height: 48px;
                         text-align: center;
                         text-transform: capitalize;
                         border-radius: 48px;
+                        border: 2px solid var(--black);
                     }
 
                     & .topic_time {
@@ -336,13 +337,34 @@ footer {
                 }
 
                 & .info_cat {
-                    border-radius: 10px;
-                    border: 1px solid var(--green-dark);
-                    background-color: var(--green-light);
-                    padding: 6px 12px;
-
                     & .info_cat_btn {
-                        color: var(--green-dark);
+                        padding: 6px 12px;
+                        border-radius: 10px;
+                        &.Far {
+                            border: 1px solid var(--green-dark);
+                            color: var(--green-dark);
+                            background-color: var(--green-light);
+                        }
+                        &.DIY {
+                            border: 1px solid var(--red-dark);
+                            color: var(--red-dark);
+                            background-color: var(--red-light);
+                        }
+                        &.Gar {
+                            border: 1px solid var(--yellow-dark);
+                            color: var(--yellow-dark);
+                            background-color: var(--yellow-light);
+                        }
+                        &.Chi {
+                            border: 1px solid var(--blue-dark);
+                            color: var(--blue-dark);
+                            background-color: var(--blue-light);
+                        }
+                        &.Foo {
+                            border: 1px solid var(--orange-dark);
+                            color: var(--orange-dark);
+                            background-color: var(--orange-light);
+                        }
                     }
                 }
             }
@@ -353,17 +375,17 @@ footer {
             height: 100%;
         }
         & .topic-card_post-count {
-            /* MUST CHANGE DEPENDING ON CAT ____________ */
-            background-color: var(--green);
-            width: 48px;
-            height: 48px;
+            width: 30px;
+            height: 30px;
             text-align: center;
-            line-height: 48px;
-            border-top-left-radius: 20px;
-            color: var(--white);
+            line-height: 30px;
+            border-radius: 30px;
+            border-bottom-right-radius: 0;
             position: absolute;
             right: 0;
             bottom: 0;
+            color: var(--white);
+            background-color: var(--black);
         }
     }
 }
@@ -389,19 +411,20 @@ footer {
         width: 100%;
         height: 50px;
         border: 1px solid var(--blue);
-        font-size: 16px;
     }
 
     & input[type="email"],
     input[type="password"],
     input[type="text"] {
         padding-left: 14px;
+        font-size: 16px;
     }
 
     & input[type="submit"] {
-        background-color: var(--green);
+        background-color: var(--orange);
         border: none;
         cursor: pointer;
+        color: var(--black);
     }
     & .form-link {
         text-decoration: underline;
