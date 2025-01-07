@@ -34,13 +34,18 @@
 </table>
 <br>
 <br>
-<?php if($topic->getUser() == App\Session::getUser() || App\Session::getUser()->hasRole("ROLE_ADMIN")){ 
+<?php
+if($topic->getUser() == App\Session::getUser() || App\Session::getUser()->hasRole("ROLE_ADMIN")){ 
     if($topic->getClosed() == 0) { ?>
         <a href="index.php?ctrl=topic&action=lockTopic&id=<?= $topic->getId() ?>">Lock topic</a>
     <?php } else { ?>
         <a href="index.php?ctrl=topic&action=unlockTopic&id=<?= $topic->getId() ?>">Unlock topic</a>
 <?php }
-} ?>
+} 
+if(App\Session::getUser()->hasRole("ROLE_ADMIN")) { ?>
+    <a href="index.php?ctrl=topic&action=deleteTopic&id=<?= $topic->getId() ?>">delete topic</a>
+<?php }
+?>
 
 <br>
 <br>

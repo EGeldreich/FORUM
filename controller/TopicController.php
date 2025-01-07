@@ -117,4 +117,13 @@ class TopicController extends AbstractController implements ControllerInterface 
 
         $this->redirectTo("topic", "findTopic", "$id");
     }
+
+    public function deleteTopic($id) {
+        $this->restrictTo('ROLE_ADMIN');
+        $topicManager = new TopicManager;
+        
+        $topicManager->delete($id);
+
+        $this->redirectTo("home");
+    }
 }

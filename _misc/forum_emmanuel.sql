@@ -45,14 +45,12 @@ CREATE TABLE IF NOT EXISTS `post` (
   PRIMARY KEY (`id_post`),
   KEY `topic_id` (`topic_id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `FK__topic` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id_topic`),
+  CONSTRAINT `FK__topic` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id_topic`) ON DELETE CASCADE,
   CONSTRAINT `FK__user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id_user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- Listage des données de la table forum_emmanuel.post : ~10 rows (environ)
 INSERT INTO `post` (`id_post`, `postDate`, `content`, `topic_id`, `user_id`) VALUES
-	(1, '2024-12-18 16:32:23', 'Farm life is hard but rewarding.', 1, 1),
-	(2, '2024-12-18 16:32:23', 'The joy of living on a farm is incredible!', 1, 2),
 	(3, '2024-12-18 16:32:23', 'A well-maintained garden brings peace and beauty.', 2, 3),
 	(4, '2024-12-18 16:32:23', 'Gardening is an art that anyone can master.', 2, 4),
 	(5, '2024-12-18 16:32:23', 'Chickens need a proper space to roam freely.', 3, 5),
@@ -80,7 +78,6 @@ CREATE TABLE IF NOT EXISTS `topic` (
 
 -- Listage des données de la table forum_emmanuel.topic : ~5 rows (environ)
 INSERT INTO `topic` (`id_topic`, `title`, `content`, `creationDate`, `closed`, `category_id`, `user_id`) VALUES
-	(1, 'Living the Farm Life', 'The first message of the topic', '2024-12-18 16:32:14', 0, 1, 1),
 	(2, 'Tips for a Beautiful Garden', 'The first message of the topic', '2024-12-18 16:32:14', 0, 2, 2),
 	(3, 'Raising Healthy Chickens', 'The first message of the topic', '2024-12-18 16:32:14', 0, 3, 3),
 	(4, 'Methods of Food Preservation', 'The first message of the topic', '2024-12-18 16:32:14', 0, 4, 4),
@@ -99,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `mail` (`mail`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table forum_emmanuel.user : ~7 rows (environ)
+-- Listage des données de la table forum_emmanuel.user : ~6 rows (environ)
 INSERT INTO `user` (`id_user`, `nickname`, `password`, `mail`, `role`, `registrationDate`) VALUES
 	(1, 'john_doe', 'password123', 'john_doe@example.com', 'user', '2024-12-18'),
 	(2, 'jane_smith', 'password123', 'jane_smith@example.com', 'user', '2024-12-18'),
