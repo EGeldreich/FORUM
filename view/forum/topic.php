@@ -39,7 +39,7 @@ if($topic->getUser() == App\Session::getUser() || App\Session::getUser()->hasRol
     if($topic->getClosed() == 0) { ?>
         <a href="index.php?ctrl=topic&action=lockTopic&id=<?= $topic->getId() ?>">Lock topic</a>
     <?php } else { ?>
-        <a href="index.php?ctrl=topic&action=unlockTopic&id=<?= $topic->getId() ?>">Unlock topic</a>
+        <a class="delete-btn" href="index.php?ctrl=topic&action=unlockTopic&id=<?= $topic->getId() ?>">Unlock topic</a>
 <?php }
 } 
 if(App\Session::getUser()->hasRole("ROLE_ADMIN")) { ?>
@@ -79,7 +79,7 @@ if(App\Session::getUser()->hasRole("ROLE_ADMIN")) { ?>
 <br>
 <?php if($topic->getClosed() == 0 && App\Session::getUser()){ ?>
     <div class="form post-form column">
-        <form class="" method="post" action='index.php?ctrl=post&action=newPost&id=<?= $topic->getId() ?>'>
+        <form  method="post" action='index.php?ctrl=post&action=newPost&id=<?= $topic->getId() ?>'>
                 <textarea name="content" id="content" placeholder="Write your reply here" required></textarea>
             <input type="submit" value="Post" name="newPost">
         </form>

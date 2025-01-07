@@ -61,6 +61,9 @@ a {
     display: flex;
     flex-direction: column;
 }
+.wrap {
+    flex-wrap: wrap;
+}
 .shadow {
     box-shadow: 8px 8px 12px rgba(var(--black-rgb), 0.15);
 }
@@ -172,6 +175,10 @@ body {
     overflow-y: auto;
     scroll-behavior: smooth;
     z-index: 1;
+
+    &.scrollable-content__full {
+        width: 100%;
+    }
 }
 .scrollable-content::-webkit-scrollbar {
     display: none;
@@ -319,25 +326,6 @@ footer {
                     height: 100%;
                 }
 
-                & .info_user {
-                    gap: 12px;
-                    align-items: center;
-
-                    & .user_pp {
-                        width: 48px;
-                        height: 48px;
-                        line-height: 48px;
-                        text-align: center;
-                        text-transform: capitalize;
-                        border-radius: 48px;
-                        border: 2px solid var(--black);
-                    }
-
-                    & .topic_time {
-                        color: var(--dark-grey);
-                    }
-                }
-
                 & .info_cat {
                     & .info_cat_btn {
                         padding: 6px 12px;
@@ -393,6 +381,26 @@ footer {
     }
 }
 
+& .info_user {
+    gap: 12px;
+    align-items: center;
+
+    & .user_pp {
+        width: 48px;
+        height: 48px;
+        line-height: 48px;
+        text-align: center;
+        text-transform: capitalize;
+        border-radius: 48px;
+        border: 2px solid var(--black);
+    }
+
+    & .topic_time,
+    .user_time {
+        color: var(--dark-grey);
+    }
+}
+
 /* LOGIN / REGISTER ___________________________________________________ */
 
 .form {
@@ -436,5 +444,33 @@ footer {
     & .form-link__mini {
         text-align: end;
         font-size: 16px;
+    }
+}
+
+/* USER LIST ___________________________________________________ */
+.user-list {
+    gap: 24px;
+}
+.user-card {
+    background-color: rgba(var(--white-rgb), 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 24px;
+    justify-content: space-between;
+    flex: 1 1 auto;
+    align-items: end;
+
+    & button {
+        background-color: var(--orange);
+        border-radius: 10px;
+        border: none;
+        transition: all 0.2s ease-in-out;
+        width: 96px;
+        height: 48px;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.1);
+        }
     }
 }
