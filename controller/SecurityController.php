@@ -47,6 +47,7 @@ class SecurityController extends AbstractController{
                 
                 if($mailUsed) { 
                     // If mail used, head to login with new data
+                    Session::addFlash('error', 'There is already an account with this mail.');
                     return [
                         "view" => VIEW_DIR."/authentification/login.php",
                         "meta_description" => "Login page",
@@ -56,6 +57,7 @@ class SecurityController extends AbstractController{
                 } else {
                     if($pseudoUsed){
                         // If pseudo used, head to register again
+                        Session::addFlash('error', 'This pseudo is already in use.');
                         $this->redirectTo("security", "registerPage");
                     } else {
                         // Email and pseudo not used, can check password
@@ -73,7 +75,7 @@ class SecurityController extends AbstractController{
                             $user = $userManager->findUserFromMail($mail);
                             // Add him in Session
                             Session::setUser($user);
-
+                            Session::addFlash('success', "You successfully registered. You are logged in");
                             $this->redirectTo("home");
                         } else {
                             // Pass word do not match regex
@@ -84,6 +86,7 @@ class SecurityController extends AbstractController{
                 }
             }
         } else { // if POST not set
+            Session::addFlash('error', "Stop messing with the url.");
             $this->redirectTo("security", "registerPage");
         }
     }
@@ -108,17 +111,18 @@ class SecurityController extends AbstractController{
                             Session::setUser($user);
                             $this->redirectTo("home");
                         } else {
-                            //banned
+                            Session::addFlash('error', "You are banned :(");
                             $this->redirectTo("home");
                         }
                     } else {
-                        // wrong pwd
+                        Session::addFlash('error', "Wrong Password or Email.");
                     }
                 } else {
-                    // wrong mail
+                    Session::addFlash('error', "Wrong Password or Email.");
                 }
             }
         } else { // if POST not set
+            Session::addFlash('error', "Stop messing with the url.");
             $this->redirectTo("security", "loginPage");
         }
     }
@@ -132,12 +136,14 @@ class SecurityController extends AbstractController{
         $this->restrictTo("ROLE_ADMIN");
         $manager = new UserManager;
         $manager->banUser($id);
+        Session::addFlash('success', "User banned");
         $this->redirectTo("home", "users");
     }
     public function unbanUser($id) {
         $this->restrictTo("ROLE_ADMIN");
         $manager = new UserManager;
         $manager->unbanUser($id);
+        Session::addFlash('success', "User unbanned");
         $this->redirectTo("home", "users");
     }
 }

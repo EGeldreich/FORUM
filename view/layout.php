@@ -26,13 +26,18 @@
     </head>
     <body>
         <div id="wrapper">
+            
             <div class="bg-element bg-element_first"></div>
             <div class="bg-element bg-element_second"></div>
             <div class="bg-element bg-element_third"></div>
+
             <div id="mainpage">
+
                 <!-- c'est ici que les messages (erreur ou succès) s'affichent-->
-                <h3 class="message" style="color: red"><?= App\Session::getFlash("error") ?></h3>
-                <h3 class="message" style="color: green"><?= App\Session::getFlash("success") ?></h3>
+                
+                <p class="message shadow sat18 error"><?= App\Session::getFlash("error") ?></p>
+                <p class="message shadow sat18 success"><?= App\Session::getFlash("success") ?></p>
+
                 <header class="shadow">
                     <nav class="row">
 

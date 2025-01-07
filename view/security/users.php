@@ -39,7 +39,7 @@
                 <?php }} else { ?>
                     <p class="outfit big-btn">Admin</p>
                 <?php } ?>
-            </div> 
+            </div>
         <?php } ?>
     </div>
 </div>
