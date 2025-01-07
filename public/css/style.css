@@ -163,14 +163,14 @@ body {
     height: var(--main-height);
     padding: 0 72px;
     background-color: rgba(var(--blue-rgb), 0.6);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     position: relative;
     top: calc(var(--header-height) + (var(--space-height) * 2));
     overflow: visible;
 
     &.fixed-section__topic {
         background-color: rgba(var(--white-rgb), 0.6);
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(5px);
         top: 24px;
         width: var(--content-width);
         padding: 0;
@@ -202,6 +202,7 @@ body {
         top: 0;
         left: 0;
         padding: 24px;
+        height: fit-content;
     }
 }
 .scrollable-content::-webkit-scrollbar {
@@ -210,7 +211,7 @@ body {
 /* POPUP _____________________________________________________ */
 .message {
     display: block;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     position: relative;
     top: calc(var(--header-height) + (var(--space-height) * 2));
     z-index: 33;
@@ -232,7 +233,7 @@ header {
     width: var(--wrapper-width);
     height: var(--header-height);
     background-color: rgba(var(--white-rgb), 0.6);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     padding: 0 72px;
@@ -300,7 +301,7 @@ footer {
     height: var(--footer-height);
     background-color: rgba(var(--black-rgb), 0.8);
     padding: 24px 72px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     z-index: 10;
     color: var(--white);
     justify-content: space-between;
@@ -332,7 +333,7 @@ footer {
 
     & .topic-card {
         background-color: rgba(var(--white-rgb), 0.6);
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(5px);
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
         padding: 24px;
@@ -491,7 +492,7 @@ footer {
 }
 .user-card {
     background-color: rgba(var(--white-rgb), 0.6);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     border-radius: 20px;
     padding: 24px;
     justify-content: space-between;
@@ -562,6 +563,77 @@ footer {
             right: 0;
             padding: 0 8px;
             border-top-left-radius: 10px;
+        }
+    }
+}
+.topic-btn {
+    transform: rotate(-90deg);
+    position: absolute;
+
+    &.lock {
+        top: 72px;
+        left: 8px;
+    }
+
+    &.del {
+        top: 168px;
+        left: 8px;
+    }
+
+    & button {
+        background-color: var(--orange);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border: none;
+        transition: all 0.1s ease-in-out;
+        width: 88px;
+        height: 40px;
+        cursor: pointer;
+
+        &.green {
+            background-color: var(--green);
+        }
+        &.red {
+            background-color: var(--red);
+        }
+
+        &:hover {
+            border-bottom: 4px solid var(--black);
+        }
+    }
+}
+
+.post-form {
+    width: 100%;
+    background-color: rgba(var(--blue-rgb), 0.6);
+    backdrop-filter: blur(5px);
+    border-top-left-radius: 20px;
+    overflow: hidden;
+    padding-top: 0;
+
+    & button {
+        background-color: var(--blue);
+        border: none;
+        width: fit-content;
+        padding: 4px 24px;
+        cursor: pointer;
+    }
+
+    & form textarea {
+        width: 96%;
+        height: 150px;
+        margin: 0 auto;
+        resize: none;
+        padding: 8px;
+    }
+
+    & .post-form_btns {
+        justify-content: space-between;
+        & input {
+            border: none;
+            border-radius: 0;
+            width: 153px;
+            height: 50px;
         }
     }
 }

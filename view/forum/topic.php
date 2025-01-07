@@ -84,32 +84,48 @@
         <?php }
         } ?>
     </div>
-</div>
-
-        
-
+    <!-- NEW POST -->
 <?php if($topic->getClosed() == 0 && App\Session::getUser()){ ?>
     <div class="form post-form column">
-        <form  method="post" action='index.php?ctrl=post&action=newPost&id=<?= $topic->getId() ?>'>
-                <textarea name="content" id="content" placeholder="Write your reply here" required></textarea>
-            <input type="submit" value="Post" name="newPost">
+        <button class="outfit big-btn">
+            Reply
+        </button>
+        <form  class="column" method="post" action='index.php?ctrl=post&action=newPost&id=<?= $topic->getId() ?>'>
+            <textarea name="content" id="content" placeholder="Write your reply here" required></textarea>
+            <div class="post-form_btns row">
+                <input class="outfit big-btn" type="reset" value="Abort" />
+                <input class="outfit big-btn" type="submit" value="Post" name="newPost">
+            </div>
         </form>
     </div>
 <?php } ?>
+</div>
 
-<?php
-if($topic->getUser() == App\Session::getUser() || App\Session::getUser()->hasRole("ROLE_ADMIN")){ 
-    if($topic->getClosed() == 0) { ?>
-        <a href="index.php?ctrl=topic&action=lockTopic&id=<?= $topic->getId() ?>">Lock topic</a>
-    <?php } else { ?>
-        <a class="delete-btn" href="index.php?ctrl=topic&action=unlockTopic&id=<?= $topic->getId() ?>">Unlock topic</a>
-<?php }
-} 
-if(App\Session::getUser()->hasRole("ROLE_ADMIN")) { ?>
-    <a href="index.php?ctrl=topic&action=deleteTopic&id=<?= $topic->getId(); ?>">
-        <button class="delete-btn outfit big-btn">
-            Delete topic
-        </button>
-    </a>
-<?php }
-?>
+<!-- LOCK AND DEL BTNS -->
+
+<?php // IF AUTHOR OR ADMIN, ability to lock topic (prevents new posts)
+    if($topic->getUser() == App\Session::getUser() || App\Session::getUser()->hasRole("ROLE_ADMIN")){ 
+        if($topic->getClosed() == 0) { 
+            // IF UNLOCKED, can lock?>
+            <a class="topic-btn lock" href="index.php?ctrl=topic&action=lockTopic&id=<?= $topic->getId(); ?>">
+                <button class="outfit big-btn">
+                    Lock
+                </button>
+            </a>
+        <?php } else { 
+            // IF LOCKED, can unlock?>
+            <a class="topic-btn lock" href="index.php?ctrl=topic&action=unlockTopic&id=<?= $topic->getId(); ?>">
+                <button class="outfit big-btn green">
+                    Unlock
+                </button>
+            </a>
+    <?php }
+    } 
+    // IF ADMIN, ability to delete topic
+    if(App\Session::getUser()->hasRole("ROLE_ADMIN")) { ?>
+        <a class="topic-btn del" href="index.php?ctrl=topic&action=deleteTopic&id=<?= $topic->getId(); ?>">
+            <button class="delete-btn outfit big-btn red">
+                Delete
+            </button>
+        </a>
+<?php }?>
