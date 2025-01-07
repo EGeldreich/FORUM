@@ -1,5 +1,7 @@
 <?php
     use Service\AsideService;
+    use Service\Functions;
+    $functions = new Functions();
     $asideContent = AsideService::getAsideContent();
     $categories = $asideContent['categories'];
     $users = $asideContent['users'];

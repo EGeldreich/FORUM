@@ -1,27 +1,8 @@
 <?php
     $topics = $result["data"]['topics']; 
     // UNDISPLAYED DATAS $topic->getSortDate() $topic->getClosed()
-
-    function timeElapsed($creationDate) {
-        $now = new DateTime(); // curr date and time
-        $creation = new DateTime($creationDate); // topic creation date
-        $interval = $now->diff($creation); // Calculate interval
-    
-        // Format the result
-        if ($interval->y > 0) {
-            return $interval->y . 'y';
-        } elseif ($interval->m > 0) {
-            return $interval->m . 'mo';
-        } elseif ($interval->d > 0) {
-            return $interval->d . 'd';
-        } elseif ($interval->h > 0) {
-            return $interval->h . 'h';
-        } elseif ($interval->i > 0) {
-            return $interval->i . 'm';
-        } else {
-            return $interval->s . 's';
-        }
-    }
+    use Service\Functions;
+    $functions = new Functions();
 ?>
 <div class="scrollable-content">
     <div class="topic-list column">
@@ -52,7 +33,7 @@
                                         <?= $topic->getUser()?>
                                     </p>
                                     <p class="topic_time">
-                                        <?= timeElapsed($topic->getCreationDate()); ?>
+                                        <?= $functions->timeElapsed($topic->getCreationDate()); ?>
                                     </p>
                                 </div>
                             </div>
