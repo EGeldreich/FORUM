@@ -23,13 +23,20 @@
                         </p>
                     </div>
                 </div>
-                <?php if(!$user->hasRole("ROLE_ADMIN")) {?>
+                <?php if(!$user->hasRole("ROLE_ADMIN")) {
+                    if($user->getBan() == 0) {?>
                     <a href="index.php?ctrl=security&action=banUser&id=<?= $user->getId(); ?>">
                         <button class="delete-btn outfit big-btn">
                             Ban
                         </button>
                     </a>
-                <?php } else { ?>
+                <?php }else { ?>
+                    <a href="index.php?ctrl=security&action=unbanUser&id=<?= $user->getId(); ?>">
+                        <button class="delete-btn outfit big-btn">
+                            Unban
+                        </button>
+                    </a>
+                <?php }} else { ?>
                     <p class="outfit big-btn">Admin</p>
                 <?php } ?>
             </div> 

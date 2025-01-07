@@ -15,6 +15,7 @@ final class User extends Entity{
     private $mail;
     private $role;
     private $registrationDate;
+    private $ban;
 
     private $totalTopicsPosts;  // champs non mappé
     private $totalPosts;
@@ -210,6 +211,26 @@ final class User extends Entity{
     public function setUserTopics($userTopics)
     {
         $this->userTopics = $userTopics;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of ban
+     */ 
+    public function getBan()
+    {
+        return $this->ban;
+    }
+
+    /**
+     * Set the value of ban
+     *
+     * @return  self
+     */ 
+    public function setBan($ban)
+    {
+        $this->ban = $ban;
 
         return $this;
     }

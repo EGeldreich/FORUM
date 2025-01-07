@@ -104,8 +104,13 @@ class SecurityController extends AbstractController{
                 if($user) { // if user exists, it means the mail is correct
                     $hash = $user->getPassword(); // get hashed pwd from DB
                     if ($hash == password_verify($password, $hash)) { // verify pwd
-                        Session::setUser($user);
-                        $this->redirectTo("home");
+                        if($user->getBan() == 0){
+                            Session::setUser($user);
+                            $this->redirectTo("home");
+                        } else {
+                            //banned
+                            $this->redirectTo("home");
+                        }
                     } else {
                         // wrong pwd
                     }
@@ -117,8 +122,16 @@ class SecurityController extends AbstractController{
             $this->redirectTo("security", "loginPage");
         }
     }
+
     public function logout() {
         unset($_SESSION['user']);
         $this->redirectTo("security", "loginPage");
+    }
+
+    public function banUser($id) {
+        $this->restrictTo("ROLE_ADMIN");
+        $manager = new UserManager;
+        $manager->banUser($id);
+        $this->redirectTo("home", "users");
     }
 }

@@ -61,4 +61,13 @@ class UserManager extends Manager{
         );
     }
 
+    public function banUser($id){
+
+        $sql = "UPDATE ".$this->tableName."
+                SET ban = 1
+                WHERE id_user = :id;";
+        
+        return DAO::update($sql, ['id' => $id]);
+    }
+
 }

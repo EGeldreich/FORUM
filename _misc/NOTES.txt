@@ -47,10 +47,9 @@ MANAGERS
 TO DO
 
 Admin fonctionnel
-DELETE TOPIC
 page User
 delete User
-regex mdp
+Pop up flashMsg
 
 
 
