@@ -95,7 +95,7 @@ class TopicController extends AbstractController implements ControllerInterface 
         $userTopicId = $topic->getUser()->getId();
         $loggedUserId = Session::getUser()->getId();
         
-        if($userTopicId == $loggedUserId) {
+        if($userTopicId == $loggedUserId || Session::getUser()->hasRole("ROLE_ADMIN")) {
             $topicManager->lockTopic($id);
         }
         
@@ -111,7 +111,7 @@ class TopicController extends AbstractController implements ControllerInterface 
         $userTopicId = $topic->getUser()->getId();
         $loggedUserId = Session::getUser()->getId();
         
-        if($userTopicId == $loggedUserId) {
+        if($userTopicId == $loggedUserId || Session::getUser()->hasRole("ROLE_ADMIN")) {
             $topicManager->unlockTopic($id);
         }
 

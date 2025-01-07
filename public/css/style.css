@@ -196,7 +196,9 @@ header {
         justify-content: space-between;
         align-items: center;
 
-        & .nav-right {
+        & .nav-right,
+        .nav-left {
+            align-items: center;
             gap: 24px;
         }
     }

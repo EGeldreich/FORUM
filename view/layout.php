@@ -34,7 +34,7 @@
                 <header class="shadow">
                     <nav class="row">
 
-                        <div class="nav-left">
+                        <div class="nav-left row sat20">
                             <a href="index.php">
                                 <h1 class="outfit">
                                     ForumName

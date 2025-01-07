@@ -27,7 +27,10 @@ abstract class AbstractController{
 
     public function restrictTo($role){
         
-        if(!Session::getUser() || !Session::getUser()->hasRole($role)){
+        if (Session::getUser()->hasRole("ROLE_ADMIN")) {
+            return;
+        }
+        elseif (!Session::getUser() || !Session::getUser()->hasRole($role)){
             $this->redirectTo("security", "loginPage");
         }
         return;
