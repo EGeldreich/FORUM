@@ -134,4 +134,10 @@ class SecurityController extends AbstractController{
         $manager->banUser($id);
         $this->redirectTo("home", "users");
     }
+    public function unbanUser($id) {
+        $this->restrictTo("ROLE_ADMIN");
+        $manager = new UserManager;
+        $manager->unbanUser($id);
+        $this->redirectTo("home", "users");
+    }
 }

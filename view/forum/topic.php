@@ -43,7 +43,11 @@ if($topic->getUser() == App\Session::getUser() || App\Session::getUser()->hasRol
 <?php }
 } 
 if(App\Session::getUser()->hasRole("ROLE_ADMIN")) { ?>
-    <a href="index.php?ctrl=topic&action=deleteTopic&id=<?= $topic->getId() ?>">delete topic</a>
+    <a href="index.php?ctrl=topic&action=deleteTopic&id=<?= $topic->getId(); ?>">
+        <button class="delete-btn outfit big-btn">
+            Delete topic
+        </button>
+    </a>
 <?php }
 ?>
 

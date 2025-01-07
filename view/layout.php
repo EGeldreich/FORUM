@@ -166,7 +166,10 @@
                     }
                 })
                 $(".delete-btn").on("click", function(){
-                    return confirm("Etes-vous sûr de vouloir supprimer?")
+                    return confirm("Do you really wish to delete that?")
+                })
+                $(".ban-btn").on("click", function(){
+                    return confirm("Do you really wish to modify ban status?")
                 })
                 tinymce.init({
                     selector: '.post',

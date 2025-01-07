@@ -468,6 +468,9 @@ footer {
         width: 96px;
         height: 48px;
         cursor: pointer;
+        &.green {
+            background-color: var(--green);
+        }
 
         &:hover {
             transform: scale(1.1);

@@ -26,13 +26,13 @@
                 <?php if(!$user->hasRole("ROLE_ADMIN")) {
                     if($user->getBan() == 0) {?>
                     <a href="index.php?ctrl=security&action=banUser&id=<?= $user->getId(); ?>">
-                        <button class="delete-btn outfit big-btn">
+                        <button class="ban-btn outfit big-btn">
                             Ban
                         </button>
                     </a>
                 <?php }else { ?>
                     <a href="index.php?ctrl=security&action=unbanUser&id=<?= $user->getId(); ?>">
-                        <button class="delete-btn outfit big-btn">
+                        <button class="ban-btn outfit big-btn green">
                             Unban
                         </button>
                     </a>
