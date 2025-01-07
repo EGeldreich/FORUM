@@ -59,8 +59,9 @@ class SecurityController extends AbstractController{
                         $this->redirectTo("security", "registerPage");
                     } else {
                         // Email and pseudo not used, can check password
+                        $regex = "/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/";
 
-                        if($pass1 == $pass2 && strlen($pass1) >= 8){
+                        if($pass1 == $pass2 && preg_match($regex, $pass1)){
                             $user = $userManager->add([
                                 "mail" => $mail,
                                 "nickname" => $pseudo,
@@ -74,6 +75,10 @@ class SecurityController extends AbstractController{
                             Session::setUser($user);
 
                             $this->redirectTo("home");
+                        } else {
+                            // Pass word do not match regex
+                            Session::addFlash('error', 'Password must contain 8 characters, with at least 1 lettre, 1 number and 1 special character.');
+                            $this->redirectTo("security", "registerPage");
                         }
                     }
                 }
