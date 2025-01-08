@@ -104,28 +104,30 @@
 <!-- LOCK AND DEL BTNS -->
 
 <?php // IF AUTHOR OR ADMIN, ability to lock topic (prevents new posts)
-    if($topic->getUser() == App\Session::getUser() || App\Session::getUser()->hasRole("ROLE_ADMIN")){ 
-        if($topic->getClosed() == 0) { 
-            // IF UNLOCKED, can lock?>
-            <a class="topic-btn lock" href="index.php?ctrl=topic&action=lockTopic&id=<?= $topic->getId(); ?>">
-                <button class="outfit big-btn">
-                    Lock
+    if(App\Session::getUser()){  // CHECK 
+        if($topic->getUser() == App\Session::getUser() || App\Session::getUser()->hasRole("ROLE_ADMIN")){ 
+            if($topic->getClosed() == 0) { 
+                // IF UNLOCKED, can lock?>
+                <a class="topic-btn lock" href="index.php?ctrl=topic&action=lockTopic&id=<?= $topic->getId(); ?>">
+                    <button class="outfit big-btn">
+                        Lock
+                    </button>
+                </a>
+            <?php } else { 
+                // IF LOCKED, can unlock?>
+                <a class="topic-btn lock" href="index.php?ctrl=topic&action=unlockTopic&id=<?= $topic->getId(); ?>">
+                    <button class="outfit big-btn green">
+                        Unlock
+                    </button>
+                </a>
+        <?php }
+        } 
+        // IF ADMIN, ability to delete topic
+        if(App\Session::getUser()->hasRole("ROLE_ADMIN")) { ?>
+            <a class="topic-btn del" href="index.php?ctrl=topic&action=deleteTopic&id=<?= $topic->getId(); ?>">
+                <button class="delete-btn outfit big-btn red">
+                    Delete
                 </button>
             </a>
-        <?php } else { 
-            // IF LOCKED, can unlock?>
-            <a class="topic-btn lock" href="index.php?ctrl=topic&action=unlockTopic&id=<?= $topic->getId(); ?>">
-                <button class="outfit big-btn green">
-                    Unlock
-                </button>
-            </a>
-    <?php }
-    } 
-    // IF ADMIN, ability to delete topic
-    if(App\Session::getUser()->hasRole("ROLE_ADMIN")) { ?>
-        <a class="topic-btn del" href="index.php?ctrl=topic&action=deleteTopic&id=<?= $topic->getId(); ?>">
-            <button class="delete-btn outfit big-btn red">
-                Delete
-            </button>
-        </a>
-<?php }?>
+<?php }
+}?>
