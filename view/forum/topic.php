@@ -83,13 +83,14 @@
                 </div>
         <?php }
         } ?>
-    </div>
-    <!-- NEW POST -->
-<?php if($topic->getClosed() == 0 && App\Session::getUser()){ ?>
-    <div class="form post-form column">
-        <button class="outfit big-btn">
-            Reply
-        </button>
+    </div>    
+</div>
+
+<!-- NEW POST -->
+<?php if($topic->getClosed() == 0){ ?>
+    <label class="reply-btn_label outfit big-btn"for="reply">Reply</label>
+    <input class="reply-btn" type="checkbox" name="reply" id="reply">
+    <div class="post-form column">
         <form  class="column" method="post" action='index.php?ctrl=post&action=newPost&id=<?= $topic->getId() ?>'>
             <textarea name="content" id="content" placeholder="Write your reply here" required></textarea>
             <div class="post-form_btns row">
@@ -99,13 +100,12 @@
         </form>
     </div>
 <?php } ?>
-</div>
 
 <!-- LOCK AND DEL BTNS -->
 
 <?php // IF AUTHOR OR ADMIN, ability to lock topic (prevents new posts)
     if(App\Session::getUser()){  // CHECK 
-        if($topic->getUser() == App\Session::getUser() || App\Session::getUser()->hasRole("ROLE_ADMIN")){ 
+        if($topic->getUser() == App\Session::getUser() || App\Session::isAdmin()){ 
             if($topic->getClosed() == 0) { 
                 // IF UNLOCKED, can lock?>
                 <a class="topic-btn lock" href="index.php?ctrl=topic&action=lockTopic&id=<?= $topic->getId(); ?>">
@@ -123,7 +123,7 @@
         <?php }
         } 
         // IF ADMIN, ability to delete topic
-        if(App\Session::getUser()->hasRole("ROLE_ADMIN")) { ?>
+        if(App\Session::isAdmin()) { ?>
             <a class="topic-btn del" href="index.php?ctrl=topic&action=deleteTopic&id=<?= $topic->getId(); ?>">
                 <button class="delete-btn outfit big-btn red">
                     Delete
