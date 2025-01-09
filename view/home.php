@@ -7,7 +7,7 @@
 <div class="scrollable-content">
     <div class="topic-list column">
         <?php foreach($topics as $topic){ ?>
-            <a href='index.php?ctrl=topic&action=findTopic&id=<?= $topic->getId()?>'>
+            <a data-category="<?= substr($topic->getCategory(), 0, 3)?>" class="topic" href='index.php?ctrl=topic&action=findTopic&id=<?= $topic->getId()?>'>
                 <div class="topic-card row shadow">
 
                     <div class="topic-card_left column">

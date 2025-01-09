@@ -191,6 +191,6 @@
                 });
             })
         </script>
-        <script src="<?= PUBLIC_DIR ?>/js/script.js"></script>
+        <script src="<?= PUBLIC_DIR ?>/js/script.js" defer></script>
     </body>
 </html>
