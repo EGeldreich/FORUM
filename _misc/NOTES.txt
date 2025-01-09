@@ -46,16 +46,5 @@ MANAGERS
 
 TO DO
 
-Admin fonctionnel
 page User
 delete User
-Pop up flashMsg
-
-
-
-
-
-
-
-THIS PUSH
-    POST entity

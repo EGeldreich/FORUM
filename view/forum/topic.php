@@ -89,7 +89,7 @@
 <!-- NEW POST -->
 <?php if($topic->getClosed() == 0){ ?>
     <label class="reply-btn_label outfit big-btn"for="reply">Reply</label>
-    <input class="reply-btn" type="checkbox" name="reply" id="reply">
+    <input class="reply-btn" type="checkbox" name="reply" id="reply" checked>
     <div class="post-form column">
         <form  class="column" method="post" action='index.php?ctrl=post&action=newPost&id=<?= $topic->getId() ?>'>
             <textarea name="content" id="content" placeholder="Write your reply here" required></textarea>
