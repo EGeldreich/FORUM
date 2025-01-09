@@ -3,7 +3,7 @@
         <form class="column" method="post" action="index.php?ctrl=topic&action=postTopic">
             <div class="input-and-label shadow column">
                 <label class="outfit h4" for="title">Topic title</label>
-                <input type="text" name="title" id="title" placeholder="Chose a constructive and easy to understand title" required>
+                <input type="text" name="title" id="title" placeholder="Chose a constructive and easy to understand title" maxlength="100" required>
             </div>
     
             <div class="input-and-label shadow column">

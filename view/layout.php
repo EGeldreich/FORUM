@@ -88,9 +88,8 @@
                                 <h3 class="outfit">CATEGORIES</h4>
                                 <div class="list-block_list column">
                                     <?php foreach($categories as $category){ ?>
-                                                <p>
-                                                    <?= $category ?>
-                                                </p>
+                                            <input type="checkbox" name="<?= substr($category, 0, 3)?>" id="<?= substr($category, 0, 3)?>" checked>
+                                            <label class="sat18 info_cat_btn <?= substr($category, 0, 3)?>" for="<?= substr($category, 0, 3)?>"><?= $category ?></label>
                                     <?php } ?>
                                 </div>
                             </div>

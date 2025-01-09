@@ -290,6 +290,44 @@ aside {
                 & .user {
                     justify-content: space-between;
                 }
+
+                & input[type="checkbox"] {
+                    display: none;
+                }
+                & .info_cat_btn {
+                    border: 1px solid var(--white);
+                    color: var(--white);
+                    background-color: transparent;
+                    cursor: pointer;
+                }
+
+                & input[type="checkbox"]:checked + .info_cat_btn {
+                    &.Far {
+                        border: 1px solid var(--green-dark);
+                        color: var(--green-dark);
+                        background-color: var(--green-light);
+                    }
+                    &.DIY {
+                        border: 1px solid var(--red-dark);
+                        color: var(--red-dark);
+                        background-color: var(--red-light);
+                    }
+                    &.Gar {
+                        border: 1px solid var(--yellow-dark);
+                        color: var(--yellow-dark);
+                        background-color: var(--yellow-light);
+                    }
+                    &.Chi {
+                        border: 1px solid var(--blue-dark);
+                        color: var(--blue-dark);
+                        background-color: var(--blue-light);
+                    }
+                    &.Foo {
+                        border: 1px solid var(--orange-dark);
+                        color: var(--orange-dark);
+                        background-color: var(--orange-light);
+                    }
+                }
             }
         }
 
@@ -704,6 +742,7 @@ footer {
             border: 1px solid var(--black);
             color: var(--black);
             background-color: transparent;
+            cursor: pointer;
         }
 
         & input[type="radio"]:checked + .info_cat_btn {

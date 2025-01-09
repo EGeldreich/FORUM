@@ -13,7 +13,7 @@
                     <div class="topic-card_left column">
                             <h3 class="topic-card_title outfit">
                                 <?php
-                                    $out = strlen($topic->getTitle()) > 50 ? substr($topic->getTitle(),0,50)."..." : $topic->getTitle(); 
+                                    $out = strlen($topic->getTitle()) > 40 ? substr($topic->getTitle(),0,40)."..." : $topic->getTitle(); 
                                 ?>
                                 <?= $out?>
                             </h3>
