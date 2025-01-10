@@ -146,4 +146,28 @@ class SecurityController extends AbstractController{
         Session::addFlash('success', "User unbanned");
         $this->redirectTo("home", "users");
     }
+
+    public function profile() {
+        $this->restrictTo("user");
+        $manager = new UserManager;
+        $id = Session::getUser()->getId();
+        $user = $manager->findProfileData($id);
+
+        return [
+            "view" => VIEW_DIR."/security/profile.php",
+            "meta_description" => "Profile page",
+            "aside" => true,
+            "data" => ["user" => $user]
+        ];
+    }
+
+    public function deleteUser() {
+        $this->restrictTo("user");
+        $manager = new UserManager;
+        $id = Session::getUser()->getId();
+        $manager->delete($id);
+        unset($_SESSION['user']);
+        Session::addFlash('success', "Account successfully deleted");
+        $this->redirectTo("home");
+    }
 }

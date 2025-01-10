@@ -170,7 +170,7 @@
                     }
                 })
                 $(".delete-btn").on("click", function(){
-                    return confirm("Do you really wish to delete that?")
+                    return confirm("Do you really wish to do that action?")
                 })
                 $(".ban-btn").on("click", function(){
                     return confirm("Do you really wish to modify ban status?")

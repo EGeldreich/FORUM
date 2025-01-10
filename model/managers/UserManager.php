@@ -79,4 +79,27 @@ class UserManager extends Manager{
         return DAO::update($sql, ['id' => $id]);
     }
 
+    public function findProfileData($id) {
+
+        $sql = "SELECT
+                    u.nickname,
+                    u.mail,
+                    u.registrationDate,
+                    (SELECT COUNT(*) FROM post WHERE user_id = u.id_user) AS totalPosts,
+                    (SELECT COUNT(*) FROM topic WHERE user_id = u.id_user) AS totalTopics
+                FROM
+                    ".$this->tableName." u
+                LEFT JOIN post p ON u.id_user = p.user_id
+                LEFT JOIN topic t ON u.id_user = t.user_id
+                WHERE u.id_user = :id";
+        
+        return  $this->getOneOrNullResult(
+            DAO::select($sql, ['id' => $id], false), 
+            $this->className
+        );
+    }
+
+    public function deleteUser($id) {
+        
+    }
 }

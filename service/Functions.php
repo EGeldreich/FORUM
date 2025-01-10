@@ -26,4 +26,10 @@ class Functions {
         }
     }
 
+    public function renameUser($deletedUser){
+        if(!$deletedUser){
+            $deletedUser = "DeletedUser";
+        }
+    }
+
 }

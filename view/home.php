@@ -29,7 +29,7 @@
                                 </div>
 
                                 <div class="user_pseudo_time column">
-                                    <p>
+                                    <p class="pseudo outfit">
                                         <?= $topic->getUser()?>
                                     </p>
                                     <p class="topic_time">

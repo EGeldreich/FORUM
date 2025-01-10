@@ -4,6 +4,8 @@
 
     use Service\Functions;
     $functions = new Functions();
+    
+    $topicUser = $topic->getUser() ?: "DeletedUser";
 ?>
 
 <div class="fixed-section fixed-section__topic shadow">
@@ -26,7 +28,7 @@
                 <div class="poster-info_pp_stats row">
                     <div class="user_pp">
                         <p class="h3">
-                            <?= substr($topic->getUser(), 0, 1)?>
+                            <?= substr($topicUser, 0, 1)?>
                         </p>
                     </div>
                     <div class="stats column">
@@ -36,7 +38,7 @@
                 </div>
                 <div class="poster-info_pseudo_time">
                     <p class="pseudo outfit">
-                        <?= $topic->getUser()?>
+                        <?= $topicUser ?>
                     </p>
                     <p class="post_time sat18">
                         <?= $functions->timeElapsed($topic->getCreationDate()); ?>

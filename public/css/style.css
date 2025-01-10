@@ -188,6 +188,10 @@ body {
         overflow: scroll;
         scrollbar-width: none;
     }
+
+    &.fixed-section__profile {
+        padding: 24px;
+    }
 }
 .scrollable-content {
     padding: calc(var(--header-height) + var(--space-height) + 24px) 0
@@ -264,7 +268,9 @@ header {
 aside {
     position: absolute;
     width: var(--side-width);
-    height: 756px;
+    height: calc(
+        100vh - var(--header-height) - (var(--space-height) * 3) - (24px * 2)
+    );
     justify-content: space-between;
     right: 72px;
     top: 24px;
@@ -477,7 +483,7 @@ footer {
     text-align: center;
     text-transform: capitalize;
     border-radius: 48px;
-    border: 2px solid var(--black);
+    border: 3px solid var(--black);
 }
 .topic_time,
 .user_time {
@@ -786,5 +792,28 @@ footer {
     & input[type="submit"] {
         width: 50%;
         margin: 0 auto;
+    }
+}
+/* PROFILE _____________________________________________________ */
+.user-page {
+    gap: 24px;
+
+    & .user-page_name {
+        gap: 24px;
+    }
+
+    & .user-page_block p {
+        margin-left: 24px;
+    }
+
+    & .profile-btn {
+        text-align: center;
+    }
+    button {
+        background-color: var(--red);
+        border-radius: 10px;
+        padding: 6px 24px;
+        border: none;
+        cursor: pointer;
     }
 }
