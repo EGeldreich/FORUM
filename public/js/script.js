@@ -15,11 +15,8 @@ function loadFilters() {
     checkboxes.forEach((checkbox) => {
         const catId = checkbox.id;
 
-        if (localStorage.getItem(catId) === "true") {
-            checkbox.checked = true;
-        } else {
-            checkbox.checked = false;
-        }
+        localStorage.setItem(catId, "true");
+        checkbox.checked = true;
     });
 }
 
